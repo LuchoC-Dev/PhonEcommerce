@@ -9,6 +9,7 @@ export async function cleanDatabase(): Promise<void> {
   await testPrisma.$executeRaw`
     TRUNCATE TABLE
       "CartItem", "Cart",
+      "StockMovement",
       "ProductImage", "Product", "Brand", "Category",
       "AccountPermission", "Permission",
       "RefreshToken", "PasswordReset",

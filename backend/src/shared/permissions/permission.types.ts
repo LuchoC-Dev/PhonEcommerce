@@ -39,5 +39,7 @@ export const ROLE_PERMISSIONS: Record<string, PermissionString[]> = {
     'users:ban:any',
     'users:manage:any',
     'admin:access:any',
+    'stock:read:any',
+    'stock:manage:any',
   ],
 }

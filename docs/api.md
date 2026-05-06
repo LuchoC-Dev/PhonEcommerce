@@ -70,4 +70,31 @@ Todos los endpoints del carrito requieren JWT. Cada usuario tiene un único carr
 - `priceAtAdd`: precio capturado al momento de agregar el ítem.
 - `currentPrice`: precio actual del producto, actualizado en cada consulta.
 - Si el carrito expira (7 días de inactividad), sus ítems se limpian al siguiente acceso.
-- Validación de stock: pendiente hasta que el servicio de stock esté implementado.
+- Validación de stock: pendiente (se validará al crear la orden, no al agregar al carrito).
+
+## Stock
+
+Todos los endpoints de stock son exclusivos de admins (`stock:read:any` / `stock:manage:any`).
+El stock del producto se actualiza atómicamente junto con el registro del movimiento.
+
+| Método | Endpoint | Descripción | Auth |
+|---|---|---|---|
+| GET | `/stock/:productId` | Stock actual de un producto | Admin |
+| POST | `/stock/:productId/adjust` | Ajuste manual de stock (RESTOCK o ADJUSTMENT) | Admin |
+| GET | `/stock/:productId/movements` | Historial paginado de movimientos | Admin |
+
+### Tipos de movimiento
+- `RESTOCK` — entrada de stock (admin)
+- `SALE` — salida por venta (generada por el dominio `orders`, no expuesta directamente)
+- `ADJUSTMENT` — corrección manual (admin)
+- `RETURN` — devolución (generada internamente)
+
+### Body de POST /stock/:productId/adjust
+```json
+{
+  "delta": 10,
+  "type": "RESTOCK",
+  "reason": "Compra a proveedor - Factura #1234"
+}
+```
+`delta` positivo = agregar stock, negativo = quitar stock.

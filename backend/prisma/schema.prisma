@@ -155,8 +155,9 @@ model Product {
   brand       Brand         @relation(fields: [brandId], references: [id])
   categoryId  String
   category    Category      @relation(fields: [categoryId], references: [id])
-  images      ProductImage[]
-  createdAt   DateTime      @default(now())
+  images         ProductImage[]
+  stockMovements StockMovement[]
+  createdAt      DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
   @@index([brandId])
@@ -175,6 +176,32 @@ model ProductImage {
   createdAt DateTime @default(now())
 
   @@index([productId])
+}
+
+// ─── Stock ────────────────────────────────────────────────────────────────────
+
+enum StockMovementType {
+  RESTOCK    // Manual stock entry by admin
+  SALE       // Stock deducted on order confirmation
+  ADJUSTMENT // Manual correction by admin
+  RETURN     // Stock returned (e.g. cancelled order)
+}
+
+model StockMovement {
+  id          String            @id @default(cuid())
+  productId   String
+  product     Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
+  type        StockMovementType
+  quantity    Int               // positive = in, negative = out
+  stockBefore Int
+  stockAfter  Int
+  reason      String?
+  createdBy   String?           // accountId of who triggered the movement
+
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+  @@index([createdAt])
 }
 
 // ─── Cart ─────────────────────────────────────────────────────────────────────

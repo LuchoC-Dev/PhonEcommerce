@@ -18,6 +18,8 @@ export function makeAdminToken(accountId = 'test-admin-id'): string {
       'categories:create:any',
       'categories:update:any',
       'categories:delete:any',
+      'stock:read:any',
+      'stock:manage:any',
     ],
   })
 }
