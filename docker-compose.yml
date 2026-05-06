@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: imnotphound-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: imnotphound
+      POSTGRES_PASSWORD: imnotphound
+      POSTGRES_DB: imnotphound
+    ports:
+      - "5700:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
