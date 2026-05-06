@@ -1,8 +1,11 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { JwtTokenService } from '@shared/utils/token.service'
-import { UnauthorizedError } from '@shared/errors/AppError'
 
-const tokenService = new JwtTokenService()
+let tokenService: JwtTokenService | null = null
+const getTokenService = (): JwtTokenService => {
+  if (!tokenService) tokenService = new JwtTokenService()
+  return tokenService
+}
 
 export async function authenticate(
   request: FastifyRequest,
@@ -16,7 +19,7 @@ export async function authenticate(
 
   const token = authHeader.slice(7)
   try {
-    const payload = tokenService.verifyAccessToken(token)
+    const payload = getTokenService().verifyAccessToken(token)
     request.user = payload
   } catch {
     reply.status(401).send({ error: 'Unauthorized', message: 'Invalid or expired token' })

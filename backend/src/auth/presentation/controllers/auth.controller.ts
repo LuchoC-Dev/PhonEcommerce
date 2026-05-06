@@ -87,6 +87,8 @@ export class AuthController {
       reply.status(err.statusCode).send({ error: err.code ?? 'ERROR', message: err.message })
       return
     }
-    reply.status(500).send({ error: 'INTERNAL_ERROR', message: 'Internal server error' })
+    console.error('[AuthController]', err)
+    const message = process.env.NODE_ENV === 'development' && err instanceof Error ? err.message : 'Internal server error'
+    reply.status(500).send({ error: 'INTERNAL_ERROR', message })
   }
 }
