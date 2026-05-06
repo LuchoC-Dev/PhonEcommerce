@@ -3,8 +3,8 @@
 ## Stack
 - Fastify 5 + TypeScript (strict)
 - Prisma ORM
-- PostgreSQL
-- JWT auth
+- PostgreSQL (puerto 5700 en Docker)
+- JWT auth (access 15min + refresh con rotación)
 
 ## Arquitectura: Clean Architecture por Features
 
@@ -26,13 +26,16 @@ src/
     ├── database/             ← cliente Prisma singleton
     ├── middlewares/          ← auth, error handling
     ├── errors/               ← clases de error personalizadas
-    └── utils/                ← utilidades generales
+    ├── permissions/          ← ROLE_PERMISSIONS, formato resource:action:scope
+    └── utils/                ← JwtTokenService, BcryptHashService, etc.
 ```
 
-## Features disponibles
-- `products` — CRUD de productos, catálogo
-- `users` — perfil, datos personales
-- `auth` — login, register, JWT
+## Features implementadas
+- `auth` — register, login, refresh token, forgot/reset password ✅
+- `users` — profile, addresses ✅
+- `products` — CRUD productos, brands, categories (con árbol) ✅
+
+## Features pendientes
 - `cart` — carrito de compras
 - `orders` — pedidos, checkout, estados
 - `reviews` — reseñas de productos
@@ -45,17 +48,35 @@ src/
 - Los controllers no tienen lógica de negocio
 - Sin `any` en TypeScript
 
+## Auth y permisos
+- JWT en header `Authorization: Bearer <token>`
+- Permisos en formato `resource:action:scope` (ej: `products:create:any`)
+- Middleware: `authenticate` (verifica JWT), `requirePermission` (verifica permiso)
+- Ambos en `shared/middlewares/auth.middleware.ts`
+
+## Documentación — OBLIGATORIO en cada dominio
+- **OpenAPI/Swagger**: schemas completos en las rutas (description, tags, body, params, responses)
+  - Disponible en `http://localhost:3001/docs`
+- **TSDoc**: interfaces de dominio, use-cases, funciones complejas
+- **`/docs/api.md`**: resumen de endpoints
+- **`/docs/decisions/`**: ADRs para decisiones importantes
+
 ## Variables de entorno
 ```
-DATABASE_URL=postgresql://...
+DATABASE_URL=postgresql://imnotphound:imnotphound@localhost:5700/imnotphound
 JWT_SECRET=...
 PORT=3001
+FRONTEND_URL=http://localhost:3000
+NODE_ENV=development
 ```
 
 ## Endpoints base
 - `GET /health` — health check
-- Todos los endpoints de la API bajo `/api/v1/`
+- `GET /docs` — documentación OpenAPI (Swagger UI)
+- Todos los endpoints bajo `/api/v1/`
 
-## Auth
-- JWT en header `Authorization: Bearer <token>`
-- Roles: `user` | `admin`
+## Gotchas conocidos
+- `prisma generate` falla en Windows si el server está corriendo (DLL locked) — matar el proceso primero
+- `tsx` no carga `.env` automáticamente — usar `--env-file=.env` en el script dev
+- `prisma migrate dev` no acepta `--env-file` — pasar con `DATABASE_URL=... npx prisma migrate dev`
+- Vitest necesita `fileParallelism: false` para tests de integración con DB compartida
