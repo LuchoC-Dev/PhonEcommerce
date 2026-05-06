@@ -10,8 +10,8 @@ export default defineConfig({
     setupFiles: ['./src/__tests__/setup.ts'],
     coverage: {
       provider: 'v8',
-      include: ['src/products/**', 'src/auth/**', 'src/users/**'],
-      exclude: ['src/products/**/__tests__/**', 'src/auth/**/__tests__/**', 'src/users/**/__tests__/**'],
+      include: ['src/products/**', 'src/auth/**', 'src/users/**', 'src/cart/**'],
+      exclude: ['src/products/**/__tests__/**', 'src/auth/**/__tests__/**', 'src/users/**/__tests__/**', 'src/cart/**/__tests__/**'],
     },
   },
 })

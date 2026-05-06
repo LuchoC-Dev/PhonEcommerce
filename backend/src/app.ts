@@ -5,6 +5,7 @@ import { userRoutes } from '@users/presentation/routes/user.routes'
 import { productRoutes } from '@products/presentation/routes/product.routes'
 import { brandRoutes } from '@products/presentation/routes/brand.routes'
 import { categoryRoutes } from '@products/presentation/routes/category.routes'
+import { cartRoutes } from '@cart/presentation/routes/cart.routes'
 
 const app = Fastify({ logger: true })
 
@@ -23,6 +24,7 @@ app.register(userRoutes, { prefix: '/api/v1/users' })
 app.register(productRoutes, { prefix: '/api/v1/products' })
 app.register(brandRoutes, { prefix: '/api/v1/brands' })
 app.register(categoryRoutes, { prefix: '/api/v1/categories' })
+app.register(cartRoutes, { prefix: '/api/v1/cart' })
 
 const start = async (): Promise<void> => {
   try {

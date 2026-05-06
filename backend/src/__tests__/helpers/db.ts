@@ -8,6 +8,7 @@ export const testPrisma = new PrismaClient({
 export async function cleanDatabase(): Promise<void> {
   await testPrisma.$executeRaw`
     TRUNCATE TABLE
+      "CartItem", "Cart",
       "ProductImage", "Product", "Brand", "Category",
       "AccountPermission", "Permission",
       "RefreshToken", "PasswordReset",

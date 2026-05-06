@@ -176,3 +176,29 @@ model ProductImage {
 
   @@index([productId])
 }
+
+// ─── Cart ─────────────────────────────────────────────────────────────────────
+
+model Cart {
+  id        String     @id @default(cuid())
+  accountId String     @unique
+  expiresAt DateTime
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  items CartItem[]
+}
+
+model CartItem {
+  id         String   @id @default(cuid())
+  cartId     String
+  cart       Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId  String
+  quantity   Int
+  priceAtAdd Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([cartId, productId])
+  @@index([cartId])
+}

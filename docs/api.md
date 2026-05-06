@@ -53,3 +53,21 @@ Documentación interactiva: `http://localhost:3001/docs`
 | POST | `/categories` | Crear categoría | Admin |
 | PUT | `/categories/:id` | Editar categoría | Admin |
 | DELETE | `/categories/:id` | Eliminar categoría | Admin |
+
+## Cart
+
+Todos los endpoints del carrito requieren JWT. Cada usuario tiene un único carrito activo (TTL: 7 días).
+
+| Método | Endpoint | Descripción | Auth |
+|---|---|---|---|
+| GET | `/cart` | Obtener carrito con ítems y precios actuales | JWT |
+| POST | `/cart/items` | Agregar producto al carrito (suma cantidad si ya existe) | JWT |
+| PUT | `/cart/items/:productId` | Actualizar cantidad de un ítem | JWT |
+| DELETE | `/cart/items/:productId` | Eliminar un ítem del carrito | JWT |
+| DELETE | `/cart` | Vaciar el carrito (conserva el carrito) | JWT |
+
+### Notas del carrito
+- `priceAtAdd`: precio capturado al momento de agregar el ítem.
+- `currentPrice`: precio actual del producto, actualizado en cada consulta.
+- Si el carrito expira (7 días de inactividad), sus ítems se limpian al siguiente acceso.
+- Validación de stock: pendiente hasta que el servicio de stock esté implementado.
