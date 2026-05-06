@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@shared/*": ["./src/shared/*"],
+      "@products/*": ["./src/products/*"],
+      "@users/*": ["./src/users/*"],
+      "@auth/*": ["./src/auth/*"],
+      "@cart/*": ["./src/cart/*"],
+      "@orders/*": ["./src/orders/*"],
+      "@reviews/*": ["./src/reviews/*"],
+      "@admin/*": ["./src/admin/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
