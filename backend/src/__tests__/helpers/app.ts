@@ -1,0 +1,19 @@
+import Fastify, { FastifyInstance } from 'fastify'
+import cors from '@fastify/cors'
+import { authRoutes } from '@auth/presentation/routes/auth.routes'
+import { productRoutes } from '@products/presentation/routes/product.routes'
+import { brandRoutes } from '@products/presentation/routes/brand.routes'
+import { categoryRoutes } from '@products/presentation/routes/category.routes'
+
+export async function buildTestApp(): Promise<FastifyInstance> {
+  const app = Fastify({ logger: false })
+
+  await app.register(cors, { origin: '*' })
+  app.register(authRoutes, { prefix: '/api/v1/auth' })
+  app.register(productRoutes, { prefix: '/api/v1/products' })
+  app.register(brandRoutes, { prefix: '/api/v1/brands' })
+  app.register(categoryRoutes, { prefix: '/api/v1/categories' })
+
+  await app.ready()
+  return app
+}
