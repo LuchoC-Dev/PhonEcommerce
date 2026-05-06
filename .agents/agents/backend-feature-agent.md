@@ -44,6 +44,7 @@ backend/src/<feature>/
 ### 3. /docs (markdown)
 - Crear o actualizar `/docs/api.md` con el resumen de endpoints del dominio implementado
 - Si tomaste una decisión de arquitectura importante, crear un ADR en `/docs/decisions/`
+- Agregar al `/docs/TODO.md` todo lo que el usuario mencionó como "por ahora", "en el futuro" o "después lo cambiamos", usando el formato definido en ese archivo
 
 ## Al finalizar
 1. Compilar y verificar sin errores
