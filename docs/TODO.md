@@ -81,6 +81,24 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: baja
 **Agregado por**: agente-ui-ux - 2026-05-07
 
+## [auth] - Mover tokens a httpOnly cookies
+**Descripción**: Migrar el almacenamiento de `accessToken` y `refreshToken` de `localStorage` a cookies `httpOnly` para eliminar la vulnerabilidad XSS. Requiere un endpoint `/auth/set-cookie` en el backend o usar un BFF (Backend for Frontend).
+**Contexto**: Se usó localStorage para simplificar el MVP. Es suficiente para desarrollo pero no recomendado en producción.
+**Prioridad**: alta
+**Agregado por**: agente-frontend-auth - 2026-05-07
+
+## [auth] - Navbar con estado de autenticación
+**Descripción**: Actualizar el Navbar para mostrar el nombre/avatar del usuario cuando está logueado y un botón de logout. Actualmente tiene botones estáticos de "Iniciar sesión" y "Registrarse".
+**Contexto**: El Navbar fue diseñado antes del sistema de auth. Depende de `useCurrentUser`.
+**Prioridad**: alta
+**Agregado por**: agente-frontend-auth - 2026-05-07
+
+## [auth] - Redirigir a la página original tras login
+**Descripción**: Cuando el usuario es redirigido a /login por una ruta protegida, guardar la URL original en query param (`?redirect=/orders`) y redirigir allí tras el login exitoso.
+**Contexto**: El HOC `withAuth` actualmente redirige siempre a /login sin guardar el destino.
+**Prioridad**: media
+**Agregado por**: agente-frontend-auth - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.

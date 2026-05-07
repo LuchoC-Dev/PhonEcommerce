@@ -9,3 +9,4 @@ export { Modal } from "./Modal";
 export { ToastProvider, useToast } from "./Toast";
 export { Navbar } from "./Navbar";
 export { Footer } from "./Footer";
+export { withAuth } from "./withAuth";
