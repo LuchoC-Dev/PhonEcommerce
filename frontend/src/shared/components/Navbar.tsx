@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[--color-border] bg-[--color-bg]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-[#1e2028] bg-[#0a0a0a]">
       <nav
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Navegación principal"

@@ -2,7 +2,7 @@
 
 @theme inline {
   /* === Colores base === */
-  --color-bg: #0a0a0a;
+  --color-bg: #161618;
   --color-surface: #111827;
   --color-card: #1a1a2e;
   --color-border: #2d3748;
@@ -79,6 +79,11 @@ h1, h2, h3, h4, h5, h6 {
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* Footer — ligeramente más oscuro que el main, gris neutro */
+.footer-gradient {
+  background: #111113;
 }
 
 /* Scrollbar custom */
