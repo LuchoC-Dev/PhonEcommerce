@@ -38,3 +38,21 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Contexto**: Los pagos son simulados por ahora para no bloquear el desarrollo
 **Prioridad**: alta
 **Agregado por**: agente-principal - 2026-05-06
+
+## [orders] - Restaurar stock al cancelar una orden
+**Descripción**: Al cancelar una orden, registrar un movimiento de tipo `RETURN` para devolver el stock a los productos. Actualmente el stock se descuenta al crear la orden pero no se restaura al cancelar.
+**Contexto**: Requiere definir el flujo de negocio: ¿siempre se restaura, o depende del estado? (ej: si ya fue SHIPPED el stock físico puede no estar disponible). Se dejó para decidir con más contexto.
+**Prioridad**: alta
+**Agregado por**: agente-backend-orders - 2026-05-06
+
+## [orders] - Notificaciones de cambio de estado
+**Descripción**: Enviar emails o notificaciones push al usuario cuando cambia el estado de su orden (ej: "Tu pedido fue enviado")
+**Contexto**: Requiere integrar un servicio de emails (Resend, SendGrid, etc.). No implementado en esta iteración.
+**Prioridad**: media
+**Agregado por**: agente-backend-orders - 2026-05-06
+
+## [orders] - Paginación y filtros en GET /orders para admins
+**Descripción**: Agregar filtros por `status`, `accountId`, rango de fechas y búsqueda al endpoint de listado de órdenes para admins.
+**Contexto**: El listado básico está implementado. Los filtros son necesarios para el panel de administración.
+**Prioridad**: media
+**Agregado por**: agente-backend-orders - 2026-05-06

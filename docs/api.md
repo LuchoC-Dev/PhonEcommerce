@@ -98,3 +98,77 @@ El stock del producto se actualiza atómicamente junto con el registro del movim
 }
 ```
 `delta` positivo = agregar stock, negativo = quitar stock.
+
+## Orders
+
+Todos los endpoints de órdenes requieren JWT. Los usuarios solo ven y gestionan sus propias órdenes; los admins tienen acceso a todas.
+
+### Checkout desde el carrito (flujo principal)
+
+| Método | Endpoint | Descripción | Auth |
+|---|---|---|---|
+| POST | `/orders/checkout/preview` | Vista previa del checkout (precios actuales, sin escribir en DB) | JWT (user) |
+| POST | `/orders/checkout/confirm` | Confirma la orden desde el carrito, descuenta stock y vacía el carrito | JWT (user) |
+
+### Compra rápida (producto individual)
+
+| Método | Endpoint | Descripción | Auth |
+|---|---|---|---|
+| POST | `/orders/quick-buy/preview` | Vista previa de compra rápida de un producto | JWT (user) |
+| POST | `/orders/quick-buy/confirm` | Confirma compra rápida, descuenta stock | JWT (user) |
+
+### Gestión de órdenes
+
+| Método | Endpoint | Descripción | Auth |
+|---|---|---|---|
+| GET | `/orders` | Listar órdenes (propias para users, todas para admins) | JWT |
+| GET | `/orders/:id` | Detalle de una orden con ítems e historial de estados | JWT |
+| PATCH | `/orders/:id/cancel` | Cancelar orden (users: solo PENDING/CONFIRMED; admins: cualquier estado no terminal) | JWT |
+| PATCH | `/orders/:id/status` | Cambiar estado de la orden (solo admin) | JWT (admin) |
+
+### Estados de una orden
+
+`PENDING → CONFIRMED → SHIPPED → DELIVERED`
+
+Desde cualquier estado no terminal se puede ir a `CANCELLED`.
+
+### Notas
+
+- **Precios**: se captura el precio actual del producto al momento del checkout (no `priceAtAdd` del carrito).
+- **Atomicidad**: la creación de la orden, el descuento de stock y la limpieza del carrito ocurren en una única transacción.
+- **Historial**: cada cambio de estado se registra en `OrderStatusHistory` (quién lo cambió, cuándo, de qué a qué estado).
+
+### Body de POST /orders/checkout/preview y /checkout/confirm
+
+```json
+{
+  "shipping": {
+    "name": "John Doe",
+    "phone": "+54 11 1234-5678",
+    "address": "Av. Corrientes 1234",
+    "city": "Buenos Aires",
+    "state": "CABA",
+    "country": "AR",
+    "zipCode": "1043"
+  }
+}
+```
+
+### Body de POST /orders/quick-buy/preview y /quick-buy/confirm
+
+```json
+{
+  "productId": "cld...",
+  "quantity": 1,
+  "shipping": { ... }
+}
+```
+
+### Body de PATCH /orders/:id/status
+
+```json
+{
+  "status": "CONFIRMED",
+  "note": "Pago verificado manualmente"
+}
+```

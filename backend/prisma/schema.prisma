@@ -204,6 +204,66 @@ model StockMovement {
   @@index([createdAt])
 }
 
+// ─── Orders ───────────────────────────────────────────────────────────────────
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  accountId       String
+  status          OrderStatus @default(PENDING)
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  shippingName    String
+  shippingPhone   String?
+  shippingAddress String
+  shippingCity    String
+  shippingState   String?
+  shippingCountry String
+  shippingZipCode String
+
+  items         OrderItem[]
+  statusHistory OrderStatusHistory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([accountId])
+  @@index([status])
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+}
+
+model OrderStatusHistory {
+  id         String       @id @default(cuid())
+  orderId    String
+  order      Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  fromStatus OrderStatus?
+  toStatus   OrderStatus
+  changedBy  String?
+  note       String?
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+}
+
 // ─── Cart ─────────────────────────────────────────────────────────────────────
 
 model Cart {

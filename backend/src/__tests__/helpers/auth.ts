@@ -20,6 +20,10 @@ export function makeAdminToken(accountId = 'test-admin-id'): string {
       'categories:delete:any',
       'stock:read:any',
       'stock:manage:any',
+      'orders:create:any',
+      'orders:view:any',
+      'orders:cancel:any',
+      'orders:manage:any',
     ],
   })
 }
@@ -30,6 +34,11 @@ export function makeUserToken(accountId = 'test-user-id'): string {
     email: 'user@test.com',
     username: 'user',
     role: 'USER',
-    permissions: [],
+    permissions: [
+      'orders:create:own',
+      'orders:view:own',
+      'orders:cancel:own',
+      'cart:manage:own',
+    ],
   })
 }
