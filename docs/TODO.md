@@ -141,6 +141,30 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: media
 **Agregado por**: agente-frontend-product - 2026-05-07
 
+## [cart] - Página /checkout
+**Descripción**: Implementar la página de checkout (`/checkout`) con formulario de datos de entrega y resumen del pedido. Actualmente el botón "Ir al checkout" navega a `/checkout` pero la página no existe.
+**Contexto**: El cart feature fue implementado. El checkout fue dejado para la siguiente iteración ya que implica integración con pagos.
+**Prioridad**: alta
+**Agregado por**: agente-frontend-cart - 2026-05-07
+
+## [cart] - Adaptar tipos si el backend retorna forma diferente
+**Descripción**: El cart service asume que `POST /api/v1/cart/items`, `PUT /api/v1/cart/items/:id` y `DELETE /api/v1/cart/items/:id` retornan `{ items: CartItem[] }` (el carrito completo). Si el backend retorna solo el ítem, hay que agregar una llamada a `GET /api/v1/cart` después de cada mutación, o actualizar el tipo en `cart.service.ts`.
+**Contexto**: Se asumió respuesta completa por diseño REST estándar. Si falla, revisar `src/features/cart/services/cart.service.ts`.
+**Prioridad**: alta
+**Agregado por**: agente-frontend-cart - 2026-05-07
+
+## [cart] - Toast al agregar producto al carrito
+**Descripción**: El slide-over se abre automáticamente al agregar, pero sería mejor mostrar un toast discreto y no interrumpir al usuario. Evaluar si el slide-over auto-open es la mejor UX o si preferir un toast.
+**Contexto**: Se eligió abrir el slide-over desde `useAddToCart` al agregar un producto. El comportamiento puede cambiarse fácilmente en `src/features/product/hooks/useAddToCart.ts`.
+**Prioridad**: baja
+**Agregado por**: agente-frontend-cart - 2026-05-07
+
+## [cart] - Manejo de carrito expirado (TTL 7 días)
+**Descripción**: El backend tiene TTL de 7 días en el carrito. Si el carrito expira, el GET /cart puede retornar 404 o carrito vacío. Agregar manejo explícito en `cart.store.ts → sync()` para mostrar un mensaje al usuario si el carrito expiró.
+**Contexto**: Actualmente el error de sync se ignora silenciosamente. Un carrito expirado podría confundir al usuario si ve el badge con ítems pero el carrito está vacío.
+**Prioridad**: media
+**Agregado por**: agente-frontend-cart - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.

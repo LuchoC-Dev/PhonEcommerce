@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@features/auth/store/auth.store'
-import { addToCart } from '../services/product.service'
+import { useCartStore } from '@features/cart/store/cart.store'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -15,6 +15,8 @@ interface UseAddToCartResult {
 export function useAddToCart(): UseAddToCartResult {
   const [status, setStatus] = useState<Status>('idle')
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  const cartAddItem = useCartStore((s) => s.addItem)
+  const openCart = useCartStore((s) => s.open)
   const router = useRouter()
 
   async function add(productId: string, quantity: number) {
@@ -25,8 +27,9 @@ export function useAddToCart(): UseAddToCartResult {
 
     setStatus('loading')
     try {
-      await addToCart({ productId, quantity })
+      await cartAddItem(productId, quantity)
       setStatus('success')
+      openCart()
       setTimeout(() => setStatus('idle'), 2000)
     } catch {
       setStatus('error')

@@ -86,6 +86,15 @@ h1, h2, h3, h4, h5, h6 {
   background: #111113;
 }
 
+/* Slide-over animation */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.25s ease-out;
+}
+
 /* Scrollbar custom */
 ::-webkit-scrollbar {
   width: 6px;
