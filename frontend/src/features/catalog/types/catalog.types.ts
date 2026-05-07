@@ -14,8 +14,10 @@ export interface Category {
 export interface ProductImage {
   id: string
   url: string
-  alt: string | null
-  isPrimary: boolean
+  altText: string | null
+  position: number
+  productId: string
+  createdAt: string
 }
 
 export interface Product {

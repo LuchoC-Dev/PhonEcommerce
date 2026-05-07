@@ -123,6 +123,24 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: baja
 **Agregado por**: agente-frontend-catalog - 2026-05-07
 
+## [product] - Productos relacionados en el detalle
+**Descripción**: Agregar sección al final del detalle del producto con productos de la misma marca o categoría. Requiere endpoint GET /products con filtros de brandId o categoryId.
+**Contexto**: Se decidió no incluir en esta iteración para no sobrecomplicar la vista.
+**Prioridad**: baja
+**Agregado por**: agente-frontend-product - 2026-05-07
+
+## [product] - Especificaciones técnicas como campo estructurado
+**Descripción**: El backend actualmente no expone specs técnicas estructuradas (RAM, almacenamiento, cámara, etc.). Para mostrarlas en el detalle hay que agregar un campo `specs` en el modelo Product.
+**Contexto**: La tabla ProductSpecs muestra datos básicos (marca, categoría, SKU). Los specs técnicos reales requieren cambio en el backend.
+**Prioridad**: media
+**Agregado por**: agente-frontend-product - 2026-05-07
+
+## [product] - Toast de confirmación al agregar al carrito
+**Descripción**: Agregar un Toast global que aparezca al agregar un producto al carrito, con link directo para ir al carrito.
+**Contexto**: Actualmente el feedback es solo visual en el botón (estado "Agregado"). Un toast mejoraría la UX sin requerir navegación.
+**Prioridad**: media
+**Agregado por**: agente-frontend-product - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.

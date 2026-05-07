@@ -20,7 +20,7 @@ function formatPrice(price: number): string {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const primaryImage = product.images.find((img) => img.isPrimary) ?? product.images[0]
+  const primaryImage = product.images.sort((a, b) => a.position - b.position)[0]
   const apiBase = process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') ?? 'http://localhost:3001'
 
   function resolveImageUrl(url: string): string {
@@ -34,7 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {primaryImage ? (
           <Image
             src={resolveImageUrl(primaryImage.url)}
-            alt={primaryImage.alt ?? product.name}
+            alt={primaryImage.altText ?? product.name}
             fill
             unoptimized
             className="object-contain p-4"
