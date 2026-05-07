@@ -9,7 +9,7 @@ import type { LoginPayload } from '../types/auth.types'
 
 export function LoginForm() {
   const { login } = useAuth()
-  const [values, setValues] = useState<LoginPayload>({ email: '', password: '' })
+  const [values, setValues] = useState<LoginPayload>({ emailOrUsername: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -31,13 +31,12 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <Input
-        label="Email"
-        type="email"
-        placeholder="tu@email.com"
-        value={values.email}
-        onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
+        label="Email o usuario"
+        placeholder="tu@email.com o tuusuario"
+        value={values.emailOrUsername}
+        onChange={(e) => setValues((v) => ({ ...v, emailOrUsername: e.target.value }))}
         required
-        autoComplete="email"
+        autoComplete="username"
       />
       <Input
         label="Contraseña"

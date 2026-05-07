@@ -15,6 +15,7 @@ export function RegisterForm() {
   const { register } = useAuth()
   const [values, setValues] = useState<FormState>({
     name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -26,6 +27,7 @@ export function RegisterForm() {
   function validate(): boolean {
     const next: Partial<FormState> = {}
     if (!values.name.trim()) next.name = 'El nombre es requerido'
+    if (values.username.length < 3) next.username = 'Mínimo 3 caracteres'
     if (!values.email.includes('@')) next.email = 'Email inválido'
     if (values.password.length < 8) next.password = 'Mínimo 8 caracteres'
     if (values.password !== values.confirmPassword) next.confirmPassword = 'Las contraseñas no coinciden'
@@ -39,7 +41,7 @@ export function RegisterForm() {
     setServerError('')
     setLoading(true)
     try {
-      await register({ name: values.name, email: values.email, password: values.password })
+      await register({ name: values.name, username: values.username, email: values.email, password: values.password })
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Error al registrarse. Intentá de nuevo.'
       setServerError(msg)
@@ -60,6 +62,7 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <Input label="Nombre" placeholder="Juan García" autoComplete="name" required {...field('name')} />
+      <Input label="Usuario" placeholder="juangarcia" autoComplete="username" required hint="Mínimo 3 caracteres, sin espacios" {...field('username')} />
       <Input label="Email" type="email" placeholder="tu@email.com" autoComplete="email" required {...field('email')} />
       <Input label="Contraseña" type="password" placeholder="••••••••" autoComplete="new-password" required hint="Mínimo 8 caracteres" {...field('password')} />
       <Input label="Confirmar contraseña" type="password" placeholder="••••••••" autoComplete="new-password" required {...field('confirmPassword')} />

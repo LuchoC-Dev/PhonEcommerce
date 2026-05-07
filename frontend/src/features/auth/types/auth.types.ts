@@ -1,18 +1,21 @@
 export interface User {
   id: string
   email: string
-  name: string
-  role: 'user' | 'admin'
+  username: string
+  role: 'USER' | 'ADMIN'
+  permissions: string[]
+  isActive: boolean
   createdAt: string
 }
 
 export interface LoginPayload {
-  email: string
+  emailOrUsername: string
   password: string
 }
 
 export interface RegisterPayload {
   name: string
+  username: string
   email: string
   password: string
 }

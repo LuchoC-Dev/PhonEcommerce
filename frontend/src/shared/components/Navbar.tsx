@@ -1,6 +1,13 @@
+'use client'
+
 import Link from "next/link";
+import { useAuthStore } from "@features/auth/store/auth.store";
+import { useAuth } from "@features/auth/hooks/useAuth";
 
 function Navbar() {
+  const { user, isAuthenticated } = useAuthStore()
+  const { logout } = useAuth()
+
   return (
     <header className="sticky top-0 z-40 border-b border-[#1e2028] bg-[#0a0a0a]">
       <nav
@@ -51,18 +58,37 @@ function Navbar() {
           </Link>
 
           {/* Auth */}
-          <Link
-            href="/auth/login"
-            className="hidden sm:inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] text-[--color-text-muted] hover:text-[--color-text] hover:bg-[--color-surface] transition-colors"
-          >
-            Iniciar sesión
-          </Link>
-          <Link
-            href="/auth/register"
-            className="inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] bg-[--color-primary] text-white hover:bg-[--color-primary-hover] transition-colors"
-          >
-            Registrarse
-          </Link>
+          {isAuthenticated && user ? (
+            <div className="flex items-center gap-3">
+              <span className="hidden sm:block text-sm text-[--color-text-muted]">
+                Hola,{" "}
+                <span className="text-[--color-text] font-medium">
+                  {user.username}
+                </span>
+              </span>
+              <button
+                onClick={logout}
+                className="inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] text-[--color-text-muted] hover:text-[--color-danger] hover:bg-[--color-surface] transition-colors cursor-pointer"
+              >
+                Salir
+              </button>
+            </div>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="hidden sm:inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] text-[--color-text-muted] hover:text-[--color-text] hover:bg-[--color-surface] transition-colors"
+              >
+                Iniciar sesión
+              </Link>
+              <Link
+                href="/register"
+                className="inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] bg-[--color-primary] text-white hover:bg-[--color-primary-hover] transition-colors"
+              >
+                Registrarse
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </header>
