@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* === Colores base === */
+  --color-bg: #0a0a0a;
+  --color-surface: #111827;
+  --color-card: #1a1a2e;
+  --color-border: #2d3748;
+  --color-border-subtle: #1e293b;
+
+  /* === Primario: Índigo === */
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-light: #818cf8;
+  --color-primary-muted: #312e81;
+
+  /* === Texto === */
+  --color-text: #f0f0f0;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+
+  /* === Estados === */
+  --color-success: #22c55e;
+  --color-success-muted: #14532d;
+  --color-warning: #f59e0b;
+  --color-warning-muted: #451a03;
+  --color-danger: #ef4444;
+  --color-danger-muted: #450a0a;
+  --color-info: #06b6d4;
+  --color-info-muted: #083344;
+
+  /* === Tipografía === */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", monospace;
+
+  /* === Border radius === */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* === Shadows === */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 30px 0 rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 0 20px rgb(99 102 241 / 0.25);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background-color: rgb(99 102 241 / 0.3);
+  color: #f0f0f0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-subtle);
 }

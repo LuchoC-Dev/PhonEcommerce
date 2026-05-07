@@ -63,6 +63,24 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: baja
 **Agregado por**: agente-principal - 2026-05-07
 
+## [design] - Navbar con lógica de autenticación
+**Descripción**: Actualizar Navbar para mostrar avatar/nombre del usuario cuando está logueado, y esconder los botones de auth. Usar el contexto de auth cuando esté implementado.
+**Contexto**: El Navbar base está implementado como estático. La lógica de auth se agregará cuando se implemente el dominio auth en el frontend.
+**Prioridad**: alta
+**Agregado por**: agente-ui-ux - 2026-05-07
+
+## [design] - Animaciones y transiciones de página
+**Descripción**: Agregar transiciones entre rutas (page transitions), animaciones de entrada para cards del catálogo (stagger), y micro-interacciones en el carrito.
+**Contexto**: Se priorizó tener los componentes base funcionales. Las animaciones mejorarían la experiencia pero no son bloqueantes.
+**Prioridad**: baja
+**Agregado por**: agente-ui-ux - 2026-05-07
+
+## [design] - Dark/Light mode toggle
+**Descripción**: Agregar soporte para modo claro con toggle en la Navbar. Actualmente el diseño es 100% dark.
+**Contexto**: Se decidió arrancar solo dark mode para no complicar el sistema de tokens. Se puede agregar después con CSS custom properties.
+**Prioridad**: baja
+**Agregado por**: agente-ui-ux - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.
