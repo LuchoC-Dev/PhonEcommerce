@@ -34,12 +34,13 @@ src/
 - `auth` — register, login, refresh token, forgot/reset password ✅
 - `users` — profile, addresses ✅
 - `products` — CRUD productos, brands, categories (con árbol) ✅
+- `cart` — carrito con TTL 7 días, priceAtAdd + currentPrice ✅
+- `stock` — historial de movimientos, DeductStock para uso interno ✅
+- `orders` — checkout desde carrito y quick-buy, flujo preview → confirm ✅
 
 ## Features pendientes
-- `cart` — carrito de compras
-- `orders` — pedidos, checkout, estados
-- `reviews` — reseñas de productos
-- `admin` — operaciones de administrador
+- `reviews` — reseñas y calificaciones (ver docs/TODO.md)
+- `admin` — métricas para dashboard (ver docs/TODO.md)
 
 ## Reglas de arquitectura
 - La dependencia va siempre hacia adentro: `presentation → application → domain`

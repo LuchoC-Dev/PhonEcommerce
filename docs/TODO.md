@@ -56,3 +56,15 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Contexto**: El listado básico está implementado. Los filtros son necesarios para el panel de administración.
 **Prioridad**: media
 **Agregado por**: agente-backend-orders - 2026-05-06
+
+## [admin] - Endpoints de métricas para el panel de administración
+**Descripción**: Crear endpoints en `/api/v1/admin/metrics` con datos para el dashboard: ventas totales, órdenes por estado, productos más vendidos, usuarios registrados.
+**Contexto**: Se deja para cuando se implemente el frontend del panel admin, para saber exactamente qué datos necesita mostrar.
+**Prioridad**: baja
+**Agregado por**: agente-principal - 2026-05-07
+
+## [reviews] - Implementar dominio de reseñas y calificaciones
+**Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
+**Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.
+**Prioridad**: media
+**Agregado por**: agente-principal - 2026-05-07
