@@ -99,6 +99,30 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: media
 **Agregado por**: agente-frontend-auth - 2026-05-07
 
+## [catalog] - Filtro de precio en sidebar con rangos predefinidos
+**Descripción**: Agregar opciones rápidas de precio (ej: "Hasta $500", "$500-$1000", "Más de $1000") además de los inputs libres. Mejoraría la UX del filtrado.
+**Contexto**: Se implementaron inputs libres de min/max. Los rangos predefinidos son UX plus para después.
+**Prioridad**: baja
+**Agregado por**: agente-frontend-catalog - 2026-05-07
+
+## [catalog] - Filtros visibles en mobile (drawer/modal)
+**Descripción**: En mobile el sidebar de filtros está oculto. Agregar botón "Filtros" que abra un drawer o modal con los filtros disponibles.
+**Contexto**: El sidebar usa `hidden lg:block`, no hay UI de filtros en mobile.
+**Prioridad**: alta
+**Agregado por**: agente-frontend-catalog - 2026-05-07
+
+## [catalog] - Sincronizar filtros con URL (query params)
+**Descripción**: Persistir los filtros activos en la URL (`?brand=apple&page=2`) para que el usuario pueda compartir o volver con el mismo estado.
+**Contexto**: Los filtros son state local por ahora. Usar `useSearchParams` de Next.js para sincronizar.
+**Prioridad**: media
+**Agregado por**: agente-frontend-catalog - 2026-05-07
+
+## [catalog] - Skeleton loading para ProductGrid
+**Descripción**: Reemplazar el spinner de carga por skeleton cards que mantengan el layout y eviten el layout shift.
+**Contexto**: Se usa un spinner centralizado por simplicidad. Los skeletons mejoran la percepción de velocidad.
+**Prioridad**: baja
+**Agregado por**: agente-frontend-catalog - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.
