@@ -165,6 +165,12 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: media
 **Agregado por**: agente-frontend-cart - 2026-05-07
 
+## [orders] - Cancelar orden desde el detalle
+**Descripción**: Agregar botón "Cancelar pedido" en la página `/orders/[id]` para órdenes en estado PENDING o CONFIRMED. Llamar a `PATCH /api/v1/orders/:id/cancel` y refrescar el estado de la orden.
+**Contexto**: Se decidió no implementar en esta iteración para no bloquear el desarrollo. El usuario confirmó que queda para después.
+**Prioridad**: media
+**Agregado por**: agente-frontend-orders - 2026-05-07
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.
