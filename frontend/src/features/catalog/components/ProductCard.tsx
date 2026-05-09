@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Badge, Card, CardHeader, CardTitle, CardDescription, CardFooter, Button } from '@shared/components'
+import { formatPrice } from '@shared/utils'
 import type { Product } from '../types/catalog.types'
 
 interface ProductCardProps {
@@ -13,10 +14,6 @@ function StockBadge({ stock }: { stock: number }) {
   if (stock === 0) return <Badge variant="danger">Sin stock</Badge>
   if (stock <= 5) return <Badge variant="warning">{stock} {stock === 1 ? 'unidad' : 'unidades'}</Badge>
   return <Badge variant="success">En stock</Badge>
-}
-
-function formatPrice(price: number): string {
-  return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(price)
 }
 
 export function ProductCard({ product }: ProductCardProps) {
