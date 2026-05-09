@@ -1,6 +1,6 @@
 'use client'
 
-import { use } from 'react'
+import { use, useState } from 'react'
 import Link from 'next/link'
 import { withAuth } from '@shared/components/withAuth'
 import { Spinner } from '@shared/components/Spinner'
@@ -13,7 +13,8 @@ interface Props {
 
 function OrderDetailPage({ params }: Props) {
   const { id } = use(params)
-  const { order, isLoading, error } = useOrder(id)
+  const { order, isLoading, error, cancelOrder, isCancelling, cancelError } = useOrder(id)
+  const [confirming, setConfirming] = useState(false)
 
   if (isLoading) {
     return (
@@ -105,6 +106,46 @@ function OrderDetailPage({ params }: Props) {
             <p className="text-sm text-[--color-text-muted]">{order.shippingCountry}</p>
           </div>
         </div>
+
+        {(order.status === 'PENDING' || order.status === 'CONFIRMED') && (
+          <div className="flex flex-col gap-3 items-start">
+            {!confirming ? (
+              <button
+                type="button"
+                onClick={() => setConfirming(true)}
+                className="border border-red-500 text-red-400 hover:bg-red-500/10 rounded-xl px-4 py-2 text-sm font-medium transition-colors"
+              >
+                Cancelar pedido
+              </button>
+            ) : (
+              <div className="flex flex-col gap-3">
+                <p className="text-sm text-[--color-text-muted]">¿Estás seguro?</p>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => cancelOrder().then(() => setConfirming(false))}
+                    disabled={isCancelling}
+                    className="rounded-xl px-4 py-2 text-sm font-medium bg-red-500 hover:bg-red-600 text-white transition-colors disabled:opacity-60 inline-flex items-center gap-2"
+                  >
+                    {isCancelling && <Spinner size="sm" />}
+                    Sí, cancelar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setConfirming(false)}
+                    disabled={isCancelling}
+                    className="rounded-xl px-4 py-2 text-sm font-medium border border-[--color-border] text-[--color-text-muted] hover:bg-[--color-surface] transition-colors disabled:opacity-60"
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            )}
+            {cancelError && (
+              <p className="text-xs text-red-400">{cancelError}</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

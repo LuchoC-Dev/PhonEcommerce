@@ -20,3 +20,8 @@ export async function getOrder(id: string): Promise<OrderWithDetails> {
   const { data } = await api.get<OrderWithDetails>(`/orders/${id}`)
   return data
 }
+
+export async function cancelOrder(id: string): Promise<OrderWithDetails> {
+  const { data } = await api.patch<OrderWithDetails>(`/orders/${id}/cancel`)
+  return data
+}
