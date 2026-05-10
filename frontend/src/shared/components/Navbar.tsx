@@ -6,7 +6,9 @@ import { useAuth } from "@features/auth/hooks/useAuth";
 import { useCartStore, selectItemCount } from "@features/cart/store/cart.store";
 
 function Navbar() {
-  const { user, isAuthenticated } = useAuthStore()
+  const user = useAuthStore((s) => s.user)
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  const isLoading = useAuthStore((s) => s.isLoading)
   const { logout } = useAuth()
   const openCart = useCartStore((s) => s.open)
   const itemCount = useCartStore(selectItemCount)
@@ -34,12 +36,22 @@ function Navbar() {
           >
             Catálogo
           </Link>
-          <Link
-            href="/deals"
-            className="text-sm text-[--color-text-muted] hover:text-[--color-text] transition-colors"
-          >
-            Ofertas
-          </Link>
+          {isAuthenticated && user && (
+            <>
+              <Link
+                href="/orders"
+                className="text-sm text-[--color-text-muted] hover:text-[--color-text] transition-colors"
+              >
+                Mis pedidos
+              </Link>
+              <Link
+                href="/profile"
+                className="text-sm text-[--color-text-muted] hover:text-[--color-text] transition-colors"
+              >
+                Mi perfil
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Acciones */}
@@ -66,7 +78,12 @@ function Navbar() {
           </button>
 
           {/* Auth */}
-          {isAuthenticated && user ? (
+          {isLoading ? (
+            <div className="flex items-center gap-3">
+              <div className="hidden sm:block w-20 h-4 rounded bg-[#1e1e2e] animate-pulse" />
+              <div className="w-16 h-9 rounded-[--radius-md] bg-[#1e1e2e] animate-pulse" />
+            </div>
+          ) : isAuthenticated && user ? (
             <div className="flex items-center gap-3">
               <span className="hidden sm:block text-sm text-[--color-text-muted]">
                 Hola,{" "}

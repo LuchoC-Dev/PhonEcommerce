@@ -10,19 +10,17 @@ export function useAuth() {
   const { setUser, logout: storeLogout } = useAuthStore()
 
   async function login(payload: LoginPayload) {
-    const { user, accessToken, refreshToken } = await authService.login(payload)
+    const { account, accessToken, refreshToken } = await authService.login(payload)
     localStorage.setItem('accessToken', accessToken)
     localStorage.setItem('refreshToken', refreshToken)
-    setUser(user)
-    router.push('/')
+    setUser(account)
   }
 
   async function register(payload: RegisterPayload) {
-    const { user, accessToken, refreshToken } = await authService.register(payload)
+    const { account, accessToken, refreshToken } = await authService.register(payload)
     localStorage.setItem('accessToken', accessToken)
     localStorage.setItem('refreshToken', refreshToken)
-    setUser(user)
-    router.push('/')
+    setUser(account)
   }
 
   function logout() {

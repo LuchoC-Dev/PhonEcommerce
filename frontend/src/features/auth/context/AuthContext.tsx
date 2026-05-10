@@ -13,28 +13,32 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const { setUser, setLoading, logout } = useAuthStore()
   const interceptorRef = useRef<number | null>(null)
+  const initialized = useRef(false)
+  const logout = () => useAuthStore.getState().logout()
 
   useEffect(() => {
-    // Cargar usuario al montar
+    if (initialized.current) return
+    initialized.current = true
+
+    const store = useAuthStore.getState()
+
     async function loadUser() {
       const token = localStorage.getItem('accessToken')
       if (!token) {
-        setLoading(false)
+        store.setLoading(false)
         return
       }
       try {
         const user = await authService.me()
-        setUser(user)
+        store.setUser(user)
       } catch {
-        logout()
+        store.logout()
       } finally {
-        setLoading(false)
+        store.setLoading(false)
       }
     }
 
-    // Interceptor de respuesta para auto-refresh
     interceptorRef.current = api.interceptors.response.use(
       (response) => response,
       async (error: AxiosError) => {
@@ -52,10 +56,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               }
               return api(original)
             } catch {
-              logout()
+              useAuthStore.getState().logout()
             }
           } else {
-            logout()
+            useAuthStore.getState().logout()
           }
         }
         return Promise.reject(error)
@@ -69,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         api.interceptors.response.eject(interceptorRef.current)
       }
     }
-  }, [setUser, setLoading, logout])
+  }, [])
 
   return <AuthContext.Provider value={{ logout }}>{children}</AuthContext.Provider>
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button } from '@shared/components/Button'
 import { Input } from '@shared/components/Input'
 import { useAuth } from '../hooks/useAuth'
@@ -9,6 +10,7 @@ import type { LoginPayload } from '../types/auth.types'
 
 export function LoginForm() {
   const { login } = useAuth()
+  const router = useRouter()
   const [values, setValues] = useState<LoginPayload>({ emailOrUsername: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -19,11 +21,11 @@ export function LoginForm() {
     setLoading(true)
     try {
       await login(values)
+      router.push('/')
     } catch (err: unknown) {
       const msg =
         err instanceof Error ? err.message : 'Credenciales incorrectas. Intentá de nuevo.'
       setError(msg)
-    } finally {
       setLoading(false)
     }
   }

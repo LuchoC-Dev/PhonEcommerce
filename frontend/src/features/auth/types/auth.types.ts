@@ -35,7 +35,7 @@ export interface AuthTokens {
 }
 
 export interface AuthResponse {
-  user: User
+  account: User
   accessToken: string
   refreshToken: string
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button } from '@shared/components/Button'
 import { Input } from '@shared/components/Input'
 import { useAuth } from '../hooks/useAuth'
@@ -13,6 +14,7 @@ interface FormState extends RegisterPayload {
 
 export function RegisterForm() {
   const { register } = useAuth()
+  const router = useRouter()
   const [values, setValues] = useState<FormState>({
     name: '',
     username: '',
@@ -42,10 +44,10 @@ export function RegisterForm() {
     setLoading(true)
     try {
       await register({ name: values.name, username: values.username, email: values.email, password: values.password })
+      router.push('/')
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Error al registrarse. Intentá de nuevo.'
       setServerError(msg)
-    } finally {
       setLoading(false)
     }
   }
