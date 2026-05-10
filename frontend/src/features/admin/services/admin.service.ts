@@ -9,7 +9,9 @@ import type {
   StockInfo,
   StockMovementsResponse,
   AdjustStockDTO,
+  UpdateOrderStatusDTO,
 } from '../types/admin.types'
+import type { Order, OrderWithDetails, OrderPage } from '@features/orders/types/orders.types'
 import type {
   Product,
   Brand,
@@ -106,6 +108,24 @@ export const adminService = {
     const response = await api.get<StockMovementsResponse>(`/stock/${productId}/movements`, {
       params: { page, pageSize },
     })
+    return response.data
+  },
+
+  // Orders
+  async getOrders(page: number = 1, pageSize: number = 20): Promise<OrderPage> {
+    const response = await api.get<OrderPage>('/orders', {
+      params: { page, pageSize },
+    })
+    return response.data
+  },
+
+  async getOrderById(id: string): Promise<OrderWithDetails> {
+    const response = await api.get<OrderWithDetails>(`/orders/${id}`)
+    return response.data
+  },
+
+  async updateOrderStatus(id: string, data: UpdateOrderStatusDTO): Promise<OrderWithDetails> {
+    const response = await api.patch<OrderWithDetails>(`/orders/${id}/status`, data)
     return response.data
   },
 }

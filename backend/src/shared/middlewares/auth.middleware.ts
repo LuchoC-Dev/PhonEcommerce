@@ -34,7 +34,12 @@ export function requirePermission(permission: string) {
       return
     }
 
+    const parts = permission.split(':')
+    const scope = parts[2]
+    const anyPermission = scope === 'own' ? `${parts[0]}:${parts[1]}:any` : null
+
     const hasPermission = user.permissions.includes(permission)
+      || (anyPermission !== null && user.permissions.includes(anyPermission))
     if (!hasPermission) {
       reply.status(403).send({ error: 'Forbidden', message: `Missing permission: ${permission}` })
     }

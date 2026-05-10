@@ -72,3 +72,8 @@ export interface AdjustStockDTO {
   type: 'RESTOCK' | 'ADJUSTMENT'
   reason: string
 }
+
+export interface UpdateOrderStatusDTO {
+  status: 'CONFIRMED' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED'
+  note?: string
+}
