@@ -1,0 +1,91 @@
+import api from '@shared/lib/api'
+import type {
+  CreateProductDTO,
+  UpdateProductDTO,
+  CreateBrandDTO,
+  UpdateBrandDTO,
+  CreateCategoryDTO,
+  UpdateCategoryDTO,
+} from '../types/admin.types'
+import type {
+  Product,
+  Brand,
+  Category,
+} from '@features/catalog/types/catalog.types'
+
+interface PaginatedProducts {
+  data: Product[]
+  total: number
+  page: number
+  pageSize: number
+  totalPages: number
+}
+
+export const adminService = {
+  // Products
+  async getProducts(page: number = 1, pageSize: number = 20): Promise<PaginatedProducts> {
+    const response = await api.get<PaginatedProducts>('/products', {
+      params: { page, pageSize },
+    })
+    return response.data
+  },
+
+  async getProductBySlug(slug: string): Promise<Product> {
+    const response = await api.get<Product>(`/products/${slug}`)
+    return response.data
+  },
+
+  async createProduct(data: CreateProductDTO): Promise<Product> {
+    const response = await api.post<Product>('/products', data)
+    return response.data
+  },
+
+  async updateProduct(id: string, data: UpdateProductDTO): Promise<Product> {
+    const response = await api.put<Product>(`/products/${id}`, data)
+    return response.data
+  },
+
+  async deleteProduct(id: string): Promise<void> {
+    await api.delete(`/products/${id}`)
+  },
+
+  // Brands — API returns raw array
+  async getBrands(): Promise<Brand[]> {
+    const response = await api.get<Brand[]>('/brands')
+    return response.data
+  },
+
+  async createBrand(data: CreateBrandDTO): Promise<Brand> {
+    const response = await api.post<Brand>('/brands', data)
+    return response.data
+  },
+
+  async updateBrand(id: string, data: UpdateBrandDTO): Promise<Brand> {
+    const response = await api.put<Brand>(`/brands/${id}`, data)
+    return response.data
+  },
+
+  async deleteBrand(id: string): Promise<void> {
+    await api.delete(`/brands/${id}`)
+  },
+
+  // Categories — API returns raw array (tree with children)
+  async getCategories(): Promise<Category[]> {
+    const response = await api.get<Category[]>('/categories')
+    return response.data
+  },
+
+  async createCategory(data: CreateCategoryDTO): Promise<Category> {
+    const response = await api.post<Category>('/categories', data)
+    return response.data
+  },
+
+  async updateCategory(id: string, data: UpdateCategoryDTO): Promise<Category> {
+    const response = await api.put<Category>(`/categories/${id}`, data)
+    return response.data
+  },
+
+  async deleteCategory(id: string): Promise<void> {
+    await api.delete(`/categories/${id}`)
+  },
+}

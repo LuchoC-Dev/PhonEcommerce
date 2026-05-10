@@ -11,3 +11,32 @@ export interface AdminStats {
   categories: number
   orders: number
 }
+
+export interface CreateProductDTO {
+  name: string
+  description?: string
+  price: number
+  brandId: string
+  categoryId: string
+  status: 'PUBLISHED' | 'DRAFT' | 'ARCHIVED'
+}
+
+export interface UpdateProductDTO extends Partial<CreateProductDTO> {}
+
+export interface CreateBrandDTO {
+  name: string
+}
+
+export interface UpdateBrandDTO {
+  name: string
+}
+
+export interface CreateCategoryDTO {
+  name: string
+  parentId?: string | null
+}
+
+export interface UpdateCategoryDTO {
+  name: string
+  parentId?: string | null
+}
