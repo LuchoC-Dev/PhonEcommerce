@@ -171,6 +171,12 @@ Cada item representa algo que se decidió dejar para más adelante durante el de
 **Prioridad**: media
 **Agregado por**: agente-frontend-orders - 2026-05-07
 
+## [admin] - Tiempo de redirección inconsistente en rutas protegidas
+**Descripción**: Cuando un usuario sin token accede a `/admin`, la redirección es instantánea. Cuando tiene token pero rol `USER`, tarda ~200-500ms porque `AdminAuthGuard` espera la respuesta de `GET /me` para conocer el rol. Para unificar los tiempos habría que leer el rol del JWT en el cliente sin llamar a `/me` (decodificando el token localmente), o mover la verificación al servidor con httpOnly cookies + middleware. La segunda opción es la correcta pero requiere el TODO de mover tokens a httpOnly cookies.
+**Contexto**: El tiempo de espera extra en el caso USER revela indirectamente que hay una sesión activa (timing attack leve). No es crítico en el MVP pero hay que resolverlo al mejorar la seguridad del auth.
+**Prioridad**: baja
+**Agregado por**: agente-frontend-admin - 2026-05-10
+
 ## [reviews] - Implementar dominio de reseñas y calificaciones
 **Descripción**: Crear el dominio `reviews` completo con Clean Architecture. Permitir a usuarios que compraron un producto dejar calificación (1-5) y comentario. Mostrar rating promedio y cantidad de reseñas en el detalle del producto.
 **Contexto**: Se decidió dejar para más adelante para no bloquear el desarrollo del resto del backend.

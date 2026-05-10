@@ -22,6 +22,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (typeof window !== 'undefined') {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('refreshToken')
+      document.cookie = 'accessToken=; path=/; max-age=0; SameSite=Lax'
     }
     set({ user: null, isAuthenticated: false })
   },

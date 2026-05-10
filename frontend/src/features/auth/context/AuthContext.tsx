@@ -51,6 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               const { accessToken, refreshToken } = await authService.refresh(storedRefresh)
               localStorage.setItem('accessToken', accessToken)
               localStorage.setItem('refreshToken', refreshToken)
+              document.cookie = `accessToken=${accessToken}; path=/; max-age=900; SameSite=Lax`
               if (original.headers) {
                 original.headers.Authorization = `Bearer ${accessToken}`
               }

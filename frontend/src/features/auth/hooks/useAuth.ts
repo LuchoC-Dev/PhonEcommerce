@@ -13,6 +13,7 @@ export function useAuth() {
     const { account, accessToken, refreshToken } = await authService.login(payload)
     localStorage.setItem('accessToken', accessToken)
     localStorage.setItem('refreshToken', refreshToken)
+    document.cookie = `accessToken=${accessToken}; path=/; max-age=900; SameSite=Lax`
     setUser(account)
   }
 
@@ -20,6 +21,7 @@ export function useAuth() {
     const { account, accessToken, refreshToken } = await authService.register(payload)
     localStorage.setItem('accessToken', accessToken)
     localStorage.setItem('refreshToken', refreshToken)
+    document.cookie = `accessToken=${accessToken}; path=/; max-age=900; SameSite=Lax`
     setUser(account)
   }
 

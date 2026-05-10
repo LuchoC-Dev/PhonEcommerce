@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Navbar } from "@shared/components/Navbar";
 import { Footer } from "@shared/components/Footer";
 import { AuthProvider } from "@features/auth/context/AuthContext";
