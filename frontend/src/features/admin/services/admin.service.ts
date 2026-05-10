@@ -6,6 +6,9 @@ import type {
   UpdateBrandDTO,
   CreateCategoryDTO,
   UpdateCategoryDTO,
+  StockInfo,
+  StockMovementsResponse,
+  AdjustStockDTO,
 } from '../types/admin.types'
 import type {
   Product,
@@ -87,5 +90,22 @@ export const adminService = {
 
   async deleteCategory(id: string): Promise<void> {
     await api.delete(`/categories/${id}`)
+  },
+
+  // Stock
+  async getProductStock(productId: string): Promise<StockInfo> {
+    const response = await api.get<StockInfo>(`/stock/${productId}`)
+    return response.data
+  },
+
+  async adjustStock(productId: string, data: AdjustStockDTO): Promise<void> {
+    await api.post(`/stock/${productId}/adjust`, data)
+  },
+
+  async getStockMovements(productId: string, page: number = 1, pageSize: number = 20): Promise<StockMovementsResponse> {
+    const response = await api.get<StockMovementsResponse>(`/stock/${productId}/movements`, {
+      params: { page, pageSize },
+    })
+    return response.data
   },
 }

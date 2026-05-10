@@ -40,3 +40,35 @@ export interface UpdateCategoryDTO {
   name: string
   parentId?: string | null
 }
+
+export type StockMovementType = 'RESTOCK' | 'SALE' | 'ADJUSTMENT' | 'RETURN'
+
+export interface StockInfo {
+  productId: string
+  stock: number
+}
+
+export interface StockMovement {
+  id: string
+  productId: string
+  delta: number
+  type: StockMovementType
+  reason: string
+  createdAt: string
+}
+
+export interface StockMovementsResponse {
+  data: StockMovement[]
+  meta: {
+    page: number
+    pageSize: number
+    total: number
+    totalPages: number
+  }
+}
+
+export interface AdjustStockDTO {
+  delta: number
+  type: 'RESTOCK' | 'ADJUSTMENT'
+  reason: string
+}
