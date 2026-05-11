@@ -4,10 +4,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   hint?: string;
+  hideSpin?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, hint, className = "", id, ...props }, ref) => {
+  ({ label, error, hint, hideSpin, className = "", id, ...props }, ref) => {
     const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
 
     return (
@@ -15,7 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-text font-[--font-body]"
+            className="text-sm font-medium text-text font-body"
           >
             {label}
           </label>
@@ -30,6 +31,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             "transition-colors duration-150",
             "focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary",
             "disabled:opacity-50 disabled:cursor-not-allowed",
+            hideSpin ? "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" : "",
             error
               ? "border-danger focus:border-danger focus:ring-danger"
               : "",

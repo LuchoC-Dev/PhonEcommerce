@@ -36,7 +36,7 @@ export function AddToCartButton({ productId, stock }: AddToCartButtonProps) {
             <button
               onClick={decrement}
               disabled={quantity <= 1 || isLoading}
-              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
             >
               −
             </button>
@@ -46,7 +46,7 @@ export function AddToCartButton({ productId, stock }: AddToCartButtonProps) {
             <button
               onClick={increment}
               disabled={quantity >= stock || isLoading}
-              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
             >
               +
             </button>

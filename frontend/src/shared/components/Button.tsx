@@ -12,22 +12,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow-glow disabled:bg-primary-muted disabled:text-text-muted",
+    "bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow-glow active:scale-[0.98] disabled:bg-primary-muted disabled:text-text-muted",
   secondary:
-    "bg-card text-text border border-border hover:border-primary hover:text-primary-light disabled:opacity-50",
+    "bg-card text-text border border-border hover:border-primary hover:text-primary-light active:scale-[0.98] disabled:opacity-50",
   ghost:
-    "bg-transparent text-text-muted hover:text-text hover:bg-surface disabled:opacity-40",
+    "bg-transparent text-text-muted hover:text-text hover:bg-surface active:scale-[0.98] disabled:opacity-40",
   danger:
-    "bg-danger text-white hover:bg-danger-hover shadow-sm disabled:bg-danger-muted disabled:text-text-muted",
+    "bg-danger text-white hover:bg-danger-hover active:scale-[0.98] disabled:bg-danger-muted disabled:text-text-muted",
   subtle:
-    "bg-transparent text-text-muted hover:bg-border hover:text-text disabled:opacity-40",
+    "bg-transparent text-text-muted hover:bg-border hover:text-text active:scale-[0.98] disabled:opacity-40",
   "secondary-alt":
-    "bg-border text-text hover:bg-primary-muted/60 hover:text-text disabled:opacity-50",
+    "bg-border text-text hover:bg-primary-muted/60 hover:text-text active:scale-[0.98] disabled:opacity-50",
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: "h-8 px-3 text-sm gap-1.5 rounded-sm",
-  md: "h-10 px-4 text-sm gap-2 rounded-md",
+  sm: "h-8 px-3 text-sm gap-1.5 rounded-lg",
+  md: "h-10 px-4 text-sm gap-2 rounded-lg",
   lg: "h-12 px-6 text-base gap-2.5 rounded-lg",
 };
 

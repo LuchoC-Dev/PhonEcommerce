@@ -95,7 +95,7 @@ export function CartSlideOver() {
               {items.map((item) => {
                 const hasPriceChange = item.currentPrice !== item.priceAtAdd
                 return (
-                  <li key={item.productId} className="flex gap-3 py-3 border-b border-border last:border-0">
+                  <li key={item.productId} className="flex items-center gap-3 py-3 border-b border-border last:border-0">
                     {/* Imagen */}
                     <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-surface flex items-center justify-center">
                       {item.image ? (
@@ -141,7 +141,7 @@ export function CartSlideOver() {
                               }
                             }}
                             disabled={isLoading}
-                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 text-sm"
+                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 cursor-pointer text-sm"
                             aria-label="Disminuir cantidad"
                           >
                             −
@@ -152,7 +152,7 @@ export function CartSlideOver() {
                           <button
                             onClick={() => updateItem(item.productId, item.quantity + 1)}
                             disabled={isLoading}
-                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 text-sm"
+                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 cursor-pointer text-sm"
                             aria-label="Aumentar cantidad"
                           >
                             +
@@ -169,7 +169,7 @@ export function CartSlideOver() {
                     <button
                       onClick={() => removeItem(item.productId)}
                       disabled={isLoading}
-                      className="flex-shrink-0 self-start p-1 text-text-subtle hover:text-danger transition-colors disabled:opacity-40"
+                      className="flex-shrink-0 self-center p-1 text-text-subtle hover:text-danger transition-colors disabled:opacity-40 cursor-pointer"
                       aria-label={`Eliminar ${item.name}`}
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

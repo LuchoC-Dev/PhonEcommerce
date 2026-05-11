@@ -1,26 +1,34 @@
 ﻿import { HTMLAttributes, forwardRef } from "react";
+import Link from "next/link";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   hoverable?: boolean;
   padded?: boolean;
+  href?: string;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ hoverable = false, padded = true, children, className = "", ...props }, ref) => {
+  ({ hoverable = false, padded = true, href, children, className = "", ...props }, ref) => {
+    const classes = [
+      "rounded-xl border border-border bg-card/50",
+      "shadow-sm",
+      padded ? "p-6" : "",
+      hoverable
+        ? "transition-all duration-200 hover:border-primary hover:shadow-glow cursor-pointer"
+        : "",
+      className,
+    ].join(" ");
+
+    if (href) {
+      return (
+        <Link href={href} className={classes}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
-      <div
-        ref={ref}
-        className={[
-          "rounded-xl border border-border bg-card/50",
-          "shadow-[--shadow-sm]",
-          padded ? "p-6" : "",
-          hoverable
-            ? "transition-all duration-200 hover:border-primary hover:shadow-[--shadow-glow] cursor-pointer"
-            : "",
-          className,
-        ].join(" ")}
-        {...props}
-      >
+      <div ref={ref} className={classes} {...props}>
         {children}
       </div>
     );
@@ -37,7 +45,7 @@ const CardHeader = ({ children, className = "", ...props }: HTMLAttributes<HTMLD
 
 const CardTitle = ({ children, className = "", ...props }: HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    className={`font-[--font-display] text-xl font-semibold text-text ${className}`}
+    className={`font-display text-xl font-semibold text-text ${className}`}
     {...props}
   >
     {children}

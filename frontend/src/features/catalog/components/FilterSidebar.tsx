@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { Button } from '@shared/components'
+import { Button, Input } from '@shared/components'
 import type { Brand, Category, ProductFilters } from '../types/catalog.types'
 
 interface FilterSidebarProps {
@@ -76,7 +76,7 @@ export function FilterSidebar({
   }
 
   return (
-    <aside className="flex flex-col gap-6 w-full">
+    <aside className="flex flex-col gap-6 w-full p-5 rounded-xl border border-border bg-card/80 shadow-sm">
       <div className="flex items-center justify-between">
         <h2 className="font-display text-sm font-semibold text-text uppercase tracking-wider">
           Filtros
@@ -127,19 +127,21 @@ export function FilterSidebar({
       <div className="flex flex-col gap-2">
         <p className="text-xs font-semibold text-text-subtle uppercase tracking-wider">Precio</p>
         <div className="flex gap-2">
-          <input
+          <Input
             type="number"
             placeholder="Mín"
             value={filters.minPrice ?? ''}
             onChange={(e) => handlePriceChange('minPrice', e.target.value)}
-            className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
+            hideSpin
+            className="h-9 rounded-lg bg-surface"
           />
-          <input
+          <Input
             type="number"
             placeholder="Máx"
             value={filters.maxPrice ?? ''}
             onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
-            className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
+            hideSpin
+            className="h-9 rounded-lg bg-surface"
           />
         </div>
       </div>
