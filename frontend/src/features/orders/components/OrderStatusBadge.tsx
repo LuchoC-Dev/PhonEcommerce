@@ -1,15 +1,18 @@
-import { Badge } from '@shared/components/Badge'
 import type { OrderStatus } from '../types/orders.types'
 
-const STATUS_CONFIG: Record<OrderStatus, { label: string; variant: 'warning' | 'primary' | 'info' | 'success' | 'danger' }> = {
-  PENDING:   { label: 'Pendiente',  variant: 'warning' },
-  CONFIRMED: { label: 'Confirmado', variant: 'primary' },
-  SHIPPED:   { label: 'Enviado',    variant: 'info' },
-  DELIVERED: { label: 'Entregado',  variant: 'success' },
-  CANCELLED: { label: 'Cancelado',  variant: 'danger' },
+const STATUS_CONFIG: Record<OrderStatus, { label: string; bg: string; border: string; text: string }> = {
+  PENDING:   { label: 'Pendiente',  bg: 'bg-[#451a03]/50', border: 'border-[#f59e0b]/40', text: 'text-[#fbbf24]' },
+  CONFIRMED: { label: 'Confirmado', bg: 'bg-[#312e81]/40', border: 'border-[#6366f1]/40', text: 'text-[#818cf8]' },
+  SHIPPED:   { label: 'Enviado',    bg: 'bg-[#083344]/50', border: 'border-[#06b6d4]/40', text: 'text-[#22d3ee]' },
+  DELIVERED: { label: 'Entregado',  bg: 'bg-[#14532d]/50', border: 'border-[#22c55e]/40', text: 'text-[#4ade80]' },
+  CANCELLED: { label: 'Cancelado', bg: 'bg-transparent', border: 'border-0', text: 'text-[#f87171]' },
 }
 
 export function OrderStatusBadge({ status }: { status: OrderStatus }) {
-  const { label, variant } = STATUS_CONFIG[status]
-  return <Badge variant={variant}>{label}</Badge>
+  const { label, bg, border, text } = STATUS_CONFIG[status]
+  return (
+    <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${bg} ${border} ${text}`}>
+      {label}
+    </span>
+  )
 }

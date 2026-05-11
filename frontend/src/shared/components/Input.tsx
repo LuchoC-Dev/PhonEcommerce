@@ -15,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-[--color-text-muted] font-[--font-body]"
+            className="text-sm font-medium text-[#dde4ed] font-[--font-body]"
           >
             {label}
           </label>
@@ -24,14 +24,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={[
-            "h-10 w-full rounded-[--radius-md] border border-[--color-border]",
-            "bg-[--color-card] px-3 text-sm text-[--color-text]",
-            "placeholder:text-[--color-text-subtle]",
+            "h-10 w-full rounded-xl border border-[#1e1e2e]",
+            "bg-[#0d0d14]/50 px-3 text-sm text-[#f8fafc]",
+            "placeholder:text-[#64748b]",
             "transition-colors duration-150",
-            "focus:outline-none focus:border-[--color-primary] focus:ring-1 focus:ring-[--color-primary]",
+            "focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1]",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             error
-              ? "border-[--color-danger] focus:border-[--color-danger] focus:ring-[--color-danger]"
+              ? "border-[#f87171] focus:border-[#f87171] focus:ring-[#f87171]"
               : "",
             className,
           ].join(" ")}
@@ -40,7 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="text-xs text-[--color-danger]" role="alert">
+          <p id={`${inputId}-error`} className="text-xs text-[#f87171]" role="alert">
             {error}
           </p>
         )}

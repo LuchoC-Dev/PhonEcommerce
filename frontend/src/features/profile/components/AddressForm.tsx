@@ -61,7 +61,7 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      <h3 className="font-[--font-display] text-lg font-semibold text-[--color-text]">
+      <h3 className="font-[--font-display] text-lg font-semibold text-[#f8fafc]">
         {title}
       </h3>
 
@@ -102,23 +102,27 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
         />
       </div>
 
-      <label className="flex items-center gap-2.5 cursor-pointer select-none">
-        <input
-          type="checkbox"
-          {...register('isDefault')}
-          className="w-4 h-4 rounded border-[--color-border] accent-[--color-primary]"
-        />
-        <span className="text-sm text-[--color-text-muted]">
+      <label className="flex items-center gap-3 cursor-pointer select-none group">
+        <div className="relative">
+          <input
+            type="checkbox"
+            {...register('isDefault')}
+            className="sr-only peer"
+          />
+          <div className="w-9 h-5 rounded-full bg-[#1e1e2e] peer-checked:bg-[#4f46e5]/70 transition-colors duration-200" />
+          <div className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-[#94a3b8] peer-checked:bg-white peer-checked:translate-x-4 transition-all duration-200" />
+        </div>
+        <span className="text-sm text-[#94a3b8]">
           Usar como dirección predeterminada
         </span>
       </label>
 
-      <div className="flex items-center gap-3 pt-2">
-        <Button type="submit" loading={isLoading}>
-          Guardar
-        </Button>
-        <Button type="button" variant="ghost" onClick={onCancel} disabled={isLoading}>
+      <div className="flex items-center justify-end gap-3 pt-2">
+        <Button type="button" variant="ghost" onClick={onCancel} disabled={isLoading} className="!font-sans bg-transparent text-[#94a3b8] rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
           Cancelar
+        </Button>
+        <Button type="submit" loading={isLoading} className="!font-sans bg-[#1e1e2e] text-white rounded-lg text-sm font-medium hover:bg-[#312e81]/60 hover:text-[#f8fafc]">
+          Guardar
         </Button>
       </div>
     </form>

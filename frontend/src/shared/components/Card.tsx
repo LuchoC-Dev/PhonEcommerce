@@ -11,7 +11,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={[
-          "rounded-[--radius-xl] border border-[--color-border] bg-[--color-card]",
+          "rounded-xl border border-[#1e1e2e] bg-[#0d0d14]/50",
           "shadow-[--shadow-sm]",
           padded ? "p-6" : "",
           hoverable
@@ -37,7 +37,7 @@ const CardHeader = ({ children, className = "", ...props }: HTMLAttributes<HTMLD
 
 const CardTitle = ({ children, className = "", ...props }: HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    className={`font-[--font-display] text-lg font-semibold text-[--color-text] ${className}`}
+    className={`font-[--font-display] text-xl font-semibold text-[--color-text] ${className}`}
     {...props}
   >
     {children}

@@ -49,35 +49,37 @@ function Modal({ open, onClose, title, description, children, size = "md" }: Mod
       ref={dialogRef}
       onClick={handleBackdropClick}
       className={[
-        "w-full rounded-[--radius-2xl] border border-[--color-border]",
-        "bg-[--color-card] p-0 shadow-[--shadow-lg]",
+        "w-full rounded-xl border border-[#1e1e2e]",
+        "bg-[#0f0f17] p-0",
         "backdrop:bg-black/70 backdrop:backdrop-blur-sm",
         "open:flex open:flex-col",
+        "mx-auto",
         sizeClasses[size],
       ].join(" ")}
+      style={{ marginTop: "auto", marginBottom: "auto" }}
       aria-labelledby={title ? "modal-title" : undefined}
       aria-describedby={description ? "modal-description" : undefined}
     >
       {(title || description) && (
-        <div className="flex items-start justify-between p-6 border-b border-[--color-border]">
+        <div className="flex items-start justify-between p-6 border-b border-[#1e1e2e]">
           <div>
             {title && (
               <h2
                 id="modal-title"
-                className="font-[--font-display] text-lg font-semibold text-[--color-text]"
+                className="font-[--font-display] text-lg font-semibold text-[#f8fafc]"
               >
                 {title}
               </h2>
             )}
             {description && (
-              <p id="modal-description" className="mt-1 text-sm text-[--color-text-muted]">
+              <p id="modal-description" className="mt-1 text-sm text-[#94a3b8]">
                 {description}
               </p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="ml-4 rounded-[--radius-md] p-1.5 text-[--color-text-muted] hover:bg-[--color-surface] hover:text-[--color-text] transition-colors"
+            className="ml-4 rounded-lg p-1.5 text-[#94a3b8] hover:bg-[#1e1e2e] hover:text-[#f8fafc] transition-colors"
             aria-label="Cerrar"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

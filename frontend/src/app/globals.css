@@ -2,15 +2,18 @@
 
 @theme inline {
   /* === Colores base === */
-  --color-bg: #161618;
+  --color-bg: #14141d;
+
   --color-surface: #111827;
   --color-card: #1a1a2e;
   --color-border: #2d3748;
+
   --color-border-subtle: #1e293b;
 
   /* === Primario: Índigo === */
   --color-primary: #6366f1;
   --color-primary-hover: #4f46e5;
+
   --color-primary-light: #818cf8;
   --color-primary-muted: #312e81;
 
@@ -67,7 +70,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
@@ -88,8 +96,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Slide-over animation */
 @keyframes slide-in-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 .animate-slide-in-right {
   animation: slide-in-right 0.25s ease-out;

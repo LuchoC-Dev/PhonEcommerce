@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -30,6 +30,12 @@ interface ProfileFormProps {
 
 export function ProfileForm({ profile, onSave }: ProfileFormProps) {
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+
+  useEffect(() => {
+    if (!feedback) return
+    const timer = setTimeout(() => setFeedback(null), 4000)
+    return () => clearTimeout(timer)
+  }, [feedback])
 
   const {
     register,
@@ -83,21 +89,22 @@ export function ProfileForm({ profile, onSave }: ProfileFormProps) {
         {...register('bio')}
       />
 
-      {feedback && (
-        <p
-          className={`text-sm px-3 py-2 rounded-[--radius-md] ${
-            feedback.type === 'success'
-              ? 'text-[--color-success] bg-[--color-success-muted]'
-              : 'text-[--color-danger] bg-[--color-danger-muted]'
-          }`}
-        >
-          {feedback.message}
-        </p>
-      )}
-
-      <Button type="submit" loading={isSubmitting} className="self-start">
-        Guardar cambios
-      </Button>
+      <div className="flex items-center justify-between">
+        {feedback && (
+          <span
+            className={`text-sm px-3 py-2 rounded-md ml-2 ${
+              feedback.type === 'success'
+                ? 'text-[#6dd4c6] bg-[#1a1a2e]/60 border border-[#1e1e2e]'
+                : 'text-[#f87171] bg-[#450a0a]/50 border border-[#f87171]/30'
+            }`}
+          >
+            {feedback.message}
+          </span>
+        )}
+        <Button type="submit" loading={isSubmitting} className="ml-auto !font-sans bg-transparent text-white rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
+          Guardar cambios
+        </Button>
+      </div>
     </form>
   )
 }

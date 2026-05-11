@@ -68,23 +68,23 @@ export function AddressList({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="font-[--font-display] text-lg font-semibold text-[--color-text]">
+        <h2 className="font-[--font-display] text-lg font-semibold text-[#f8fafc]">
           Mis direcciones
         </h2>
-        <Button size="sm" onClick={openCreate}>
+        <Button size="sm" onClick={openCreate} className="!font-sans bg-transparent text-white rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
           Agregar dirección
         </Button>
       </div>
 
       {addresses.length === 0 ? (
-        <Card className="border border-[--color-border]">
-          <p className="text-sm text-[--color-text-muted] text-center py-4">
+        <Card className="border border-[#1e1e2e]">
+          <p className="text-sm text-[#94a3b8] text-center py-4">
             Aún no tenés direcciones guardadas
           </p>
         </Card>
       ) : (
         <div className="space-y-3">
-          {addresses.map((address) => (
+          {[...addresses].sort((a, b) => (b.isDefault ? 1 : 0) - (a.isDefault ? 1 : 0)).map((address) => (
             <AddressCard
               key={address.id}
               address={address}
