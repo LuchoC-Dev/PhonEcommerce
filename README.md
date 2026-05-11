@@ -1,4 +1,4 @@
-# PhonEcommerse
+# PhonEcommerce
 
 E-commerce de teléfonos móviles con panel de administración completo.
 
