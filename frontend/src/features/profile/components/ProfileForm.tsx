@@ -101,7 +101,7 @@ export function ProfileForm({ profile, onSave }: ProfileFormProps) {
             {feedback.message}
           </span>
         )}
-        <Button type="submit" loading={isSubmitting} className="ml-auto !font-sans bg-transparent text-text rounded-lg text-sm font-medium hover:bg-border hover:text-text">
+        <Button type="submit" variant="subtle" loading={isSubmitting} className="ml-auto">
           Guardar cambios
         </Button>
       </div>

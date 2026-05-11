@@ -118,10 +118,10 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
       </label>
 
       <div className="flex items-center justify-end gap-3 pt-2">
-        <Button type="button" variant="ghost" onClick={onCancel} disabled={isLoading} className="!font-sans bg-transparent text-text-muted rounded-lg text-sm font-medium hover:bg-border hover:text-text">
+        <Button type="button" variant="subtle" onClick={onCancel} disabled={isLoading}>
           Cancelar
         </Button>
-        <Button type="submit" loading={isLoading} className="!font-sans bg-border text-text rounded-lg text-sm font-medium hover:bg-primary-muted/60 hover:text-text">
+        <Button type="submit" variant="secondary-alt" loading={isLoading}>
           Guardar
         </Button>
       </div>

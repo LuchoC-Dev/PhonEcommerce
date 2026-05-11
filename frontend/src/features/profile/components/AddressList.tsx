@@ -66,7 +66,7 @@ export function AddressList({ addresses, onAdd, onUpdate, onDelete, isLoading }:
         <Button
           size="sm"
           onClick={openCreate}
-          className="!font-sans bg-transparent text-text rounded-lg text-sm font-medium hover:bg-border hover:text-text"
+          variant="subtle"
         >
           Agregar dirección
         </Button>

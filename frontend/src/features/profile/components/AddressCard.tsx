@@ -74,15 +74,14 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
           <span className="text-sm text-text-muted">
             ¿Seguro que querés eliminar esta dirección?
           </span>
-          <Button variant="danger" size="sm" loading={deleting} onClick={handleDelete} className="!font-sans text-sm font-medium rounded-lg">
+          <Button variant="danger" size="sm" font="body" loading={deleting} onClick={handleDelete}>
             Sí
           </Button>
           <Button
-            variant="ghost"
+            variant="subtle"
             size="sm"
             onClick={() => setShowConfirm(false)}
             disabled={deleting}
-            className="!font-sans text-sm font-medium text-text-muted hover:bg-border hover:text-text rounded-lg"
           >
             No
           </Button>

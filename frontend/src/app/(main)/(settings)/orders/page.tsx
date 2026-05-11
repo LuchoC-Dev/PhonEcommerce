@@ -16,7 +16,7 @@ function OrdersPage() {
         <h1 className="text-2xl font-bold text-text font-[--font-display]">Mis pedidos</h1>
         <Link
           href="/catalog"
-          className="inline-flex items-center justify-center h-8 px-3 text-sm gap-1.5 rounded-lg bg-transparent text-text-muted hover:bg-border hover:text-text !font-sans font-medium transition-all duration-150"
+          className="inline-flex items-center justify-center h-8 px-3 text-sm gap-1.5 rounded-lg bg-transparent text-text-muted hover:bg-border hover:text-text font-body font-medium transition-all duration-150"
         >
           Seguir comprando
         </Link>
