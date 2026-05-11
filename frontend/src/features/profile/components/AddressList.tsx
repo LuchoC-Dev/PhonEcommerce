@@ -1,45 +1,39 @@
-'use client'
+﻿"use client";
 
-import { useState } from 'react'
-import { Button } from '@shared/components/Button'
-import { Card } from '@shared/components/Card'
-import { Modal } from '@shared/components/Modal'
-import { AddressCard } from './AddressCard'
-import { AddressForm } from './AddressForm'
-import type { AddressFormValues } from './AddressForm'
-import type { Address, AddressPayload } from '../types/profile.types'
+import { useState } from "react";
+import { Button } from "@shared/components/Button";
+import { Card } from "@shared/components/Card";
+import { Modal } from "@shared/components/Modal";
+import { AddressCard } from "./AddressCard";
+import { AddressForm } from "./AddressForm";
+import type { AddressFormValues } from "./AddressForm";
+import type { Address, AddressPayload } from "../types/profile.types";
 
 interface AddressListProps {
-  addresses: Address[]
-  onAdd: (payload: AddressPayload) => Promise<unknown>
-  onUpdate: (id: string, payload: Partial<AddressPayload>) => Promise<unknown>
-  onDelete: (id: string) => Promise<unknown>
-  isLoading: boolean
+  addresses: Address[];
+  onAdd: (payload: AddressPayload) => Promise<unknown>;
+  onUpdate: (id: string, payload: Partial<AddressPayload>) => Promise<unknown>;
+  onDelete: (id: string) => Promise<unknown>;
+  isLoading: boolean;
 }
 
-export function AddressList({
-  addresses,
-  onAdd,
-  onUpdate,
-  onDelete,
-  isLoading,
-}: AddressListProps) {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [editing, setEditing] = useState<Address | null>(null)
+export function AddressList({ addresses, onAdd, onUpdate, onDelete, isLoading }: AddressListProps) {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editing, setEditing] = useState<Address | null>(null);
 
   function openCreate() {
-    setEditing(null)
-    setModalOpen(true)
+    setEditing(null);
+    setModalOpen(true);
   }
 
   function openEdit(address: Address) {
-    setEditing(address)
-    setModalOpen(true)
+    setEditing(address);
+    setModalOpen(true);
   }
 
   function closeModal() {
-    setModalOpen(false)
-    setEditing(null)
+    setModalOpen(false);
+    setEditing(null);
   }
 
   async function handleSubmit(data: AddressFormValues) {
@@ -51,7 +45,7 @@ export function AddressList({
         country: data.country,
         zipCode: data.zipCode,
         isDefault: data.isDefault,
-      })
+      });
     } else {
       await onAdd({
         street: data.street,
@@ -60,38 +54,40 @@ export function AddressList({
         country: data.country,
         zipCode: data.zipCode,
         isDefault: data.isDefault,
-      })
+      });
     }
-    closeModal()
+    closeModal();
   }
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="font-[--font-display] text-lg font-semibold text-[#f8fafc]">
-          Mis direcciones
-        </h2>
-        <Button size="sm" onClick={openCreate} className="!font-sans bg-transparent text-white rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
+        <h2 className="font-[--font-display] text-lg font-semibold text-text">Mis direcciones</h2>
+        <Button
+          size="sm"
+          onClick={openCreate}
+          className="!font-sans bg-transparent text-text rounded-lg text-sm font-medium hover:bg-border hover:text-text"
+        >
           Agregar dirección
         </Button>
       </div>
 
       {addresses.length === 0 ? (
-        <Card className="border border-[#1e1e2e]">
-          <p className="text-sm text-[#94a3b8] text-center py-4">
-            Aún no tenés direcciones guardadas
-          </p>
+        <Card>
+          <p className="text-sm text-text-muted text-center py-4">Aún no tenés direcciones guardadas</p>
         </Card>
       ) : (
         <div className="space-y-3">
-          {[...addresses].sort((a, b) => (b.isDefault ? 1 : 0) - (a.isDefault ? 1 : 0)).map((address) => (
-            <AddressCard
-              key={address.id}
-              address={address}
-              onEdit={() => openEdit(address)}
-              onDelete={() => onDelete(address.id)}
-            />
-          ))}
+          {[...addresses]
+            .sort((a, b) => (b.isDefault ? 1 : 0) - (a.isDefault ? 1 : 0))
+            .map((address) => (
+              <AddressCard
+                key={address.id}
+                address={address}
+                onEdit={() => openEdit(address)}
+                onDelete={() => onDelete(address.id)}
+              />
+            ))}
         </div>
       )}
 
@@ -101,9 +97,9 @@ export function AddressList({
           onSubmit={handleSubmit}
           onCancel={closeModal}
           isLoading={isLoading}
-          title={editing ? 'Editar dirección' : 'Agregar dirección'}
+          title={editing ? "Editar dirección" : "Agregar dirección"}
         />
       </Modal>
     </div>
-  )
+  );
 }

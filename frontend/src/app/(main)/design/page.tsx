@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
@@ -42,7 +42,7 @@ function ToastDemo() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="flex flex-col gap-6">
-      <h2 className="font-[--font-display] text-xl font-semibold text-[--color-text] border-b border-[--color-border] pb-3">
+      <h2 className="font-[--font-display] text-xl font-semibold text-text border-b border-border pb-3">
         {title}
       </h2>
       {children}
@@ -53,10 +53,10 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function ColorSwatch({ name, hex, className }: { name: string; hex: string; className: string }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className={`h-14 rounded-[--radius-lg] border border-[--color-border] ${className}`} />
+      <div className={`h-14 rounded-[--radius-lg] border border-border ${className}`} />
       <div>
-        <p className="text-xs font-medium text-[--color-text]">{name}</p>
-        <p className="text-xs text-[--color-text-muted] font-mono">{hex}</p>
+        <p className="text-xs font-medium text-text">{name}</p>
+        <p className="text-xs text-text-muted font-mono">{hex}</p>
       </div>
     </div>
   );
@@ -72,10 +72,10 @@ export default function DesignPage() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-16">
         {/* Header */}
         <div>
-          <h1 className="font-[--font-display] text-4xl font-bold text-[--color-text]">
+          <h1 className="font-[--font-display] text-4xl font-bold text-text">
             Design System
           </h1>
-          <p className="mt-2 text-[--color-text-muted]">
+          <p className="mt-2 text-text-muted">
             Paleta, tipografía y componentes de ImNotPhound.
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function DesignPage() {
         {/* Colores */}
         <Section title="Colores">
           <div>
-            <p className="text-sm font-medium text-[--color-text-muted] mb-3">Fondos y superficies</p>
+            <p className="text-sm font-medium text-text-muted mb-3">Fondos y superficies</p>
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
               <ColorSwatch name="Header" hex="#0a0a0a" className="bg-[#0a0a0a]" />
               <ColorSwatch name="BG / Main" hex="#161618" className="bg-[#161618]" />
@@ -93,7 +93,7 @@ export default function DesignPage() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-medium text-[--color-text-muted] mb-3">Primario — Índigo</p>
+            <p className="text-sm font-medium text-text-muted mb-3">Primario — Índigo</p>
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
               <ColorSwatch name="Primary" hex="#6366f1" className="bg-[#6366f1]" />
               <ColorSwatch name="Hover" hex="#4f46e5" className="bg-[#4f46e5]" />
@@ -102,7 +102,7 @@ export default function DesignPage() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-medium text-[--color-text-muted] mb-3">Estados</p>
+            <p className="text-sm font-medium text-text-muted mb-3">Estados</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <ColorSwatch name="Success" hex="#22c55e" className="bg-[#22c55e]" />
               <ColorSwatch name="Warning" hex="#f59e0b" className="bg-[#f59e0b]" />
@@ -116,16 +116,16 @@ export default function DesignPage() {
         <Section title="Tipografía">
           <div className="flex flex-col gap-4">
             <div>
-              <p className="text-xs text-[--color-text-muted] mb-1 font-mono">Space Grotesk — Display</p>
-              <p className="font-[--font-display] text-5xl font-bold text-[--color-text]">iPhone 16 Pro</p>
-              <p className="font-[--font-display] text-3xl font-semibold text-[--color-text]">Samsung Galaxy S25</p>
-              <p className="font-[--font-display] text-xl font-medium text-[--color-text]">Pixel 9 Pro XL</p>
+              <p className="text-xs text-text-muted mb-1 font-mono">Space Grotesk — Display</p>
+              <p className="font-[--font-display] text-5xl font-bold text-text">iPhone 16 Pro</p>
+              <p className="font-[--font-display] text-3xl font-semibold text-text">Samsung Galaxy S25</p>
+              <p className="font-[--font-display] text-xl font-medium text-text">Pixel 9 Pro XL</p>
             </div>
             <div>
-              <p className="text-xs text-[--color-text-muted] mb-1 font-mono">DM Sans — Body</p>
-              <p className="text-lg text-[--color-text]">Catálogo curado de smartphones premium.</p>
-              <p className="text-base text-[--color-text-muted]">Encontrá el teléfono que se adapta a tu vida y tu presupuesto.</p>
-              <p className="text-sm text-[--color-text-subtle]">Texto terciario — hints, placeholders, metadata</p>
+              <p className="text-xs text-text-muted mb-1 font-mono">DM Sans — Body</p>
+              <p className="text-lg text-text">Catálogo curado de smartphones premium.</p>
+              <p className="text-base text-text-muted">Encontrá el teléfono que se adapta a tu vida y tu presupuesto.</p>
+              <p className="text-sm text-text-subtle">Texto terciario — hints, placeholders, metadata</p>
             </div>
           </div>
         </Section>
@@ -133,7 +133,7 @@ export default function DesignPage() {
         {/* Buttons */}
         <Section title="Botones">
           <div>
-            <p className="text-sm text-[--color-text-muted] mb-3">Variantes</p>
+            <p className="text-sm text-text-muted mb-3">Variantes</p>
             <div className="flex flex-wrap gap-3">
               <Button variant="primary">Primary</Button>
               <Button variant="secondary">Secondary</Button>
@@ -144,7 +144,7 @@ export default function DesignPage() {
             </div>
           </div>
           <div>
-            <p className="text-sm text-[--color-text-muted] mb-3">Tamaños</p>
+            <p className="text-sm text-text-muted mb-3">Tamaños</p>
             <div className="flex flex-wrap items-center gap-3">
               <Button size="sm">Small</Button>
               <Button size="md">Medium</Button>
@@ -205,10 +205,10 @@ export default function DesignPage() {
                 <CardTitle>iPhone 16 Pro</CardTitle>
                 <CardDescription>El más avanzado de Apple con chip A18 Pro</CardDescription>
               </CardHeader>
-              <p className="text-sm text-[--color-text-muted]">256 GB · Titanio Negro</p>
+              <p className="text-sm text-text-muted">256 GB · Titanio Negro</p>
               <CardFooter>
                 <div className="flex items-center justify-between">
-                  <span className="font-[--font-display] text-xl font-bold text-[--color-text]">$1.299</span>
+                  <span className="font-[--font-display] text-xl font-bold text-text">$1.299</span>
                   <Button size="sm">Agregar al carrito</Button>
                 </div>
               </CardFooter>
@@ -223,10 +223,10 @@ export default function DesignPage() {
                   <Badge variant="success">En stock</Badge>
                 </div>
               </CardHeader>
-              <p className="text-sm text-[--color-text-muted]">128 GB · Phantom Black</p>
+              <p className="text-sm text-text-muted">128 GB · Phantom Black</p>
               <CardFooter>
                 <div className="flex items-center justify-between">
-                  <span className="font-[--font-display] text-xl font-bold text-[--color-text]">$999</span>
+                  <span className="font-[--font-display] text-xl font-bold text-text">$999</span>
                   <Button size="sm" variant="secondary">Ver más</Button>
                 </div>
               </CardFooter>
@@ -239,18 +239,18 @@ export default function DesignPage() {
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col items-center gap-2">
               <Spinner size="sm" />
-              <p className="text-xs text-[--color-text-muted]">Small</p>
+              <p className="text-xs text-text-muted">Small</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner size="md" />
-              <p className="text-xs text-[--color-text-muted]">Medium</p>
+              <p className="text-xs text-text-muted">Medium</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Spinner size="lg" />
-              <p className="text-xs text-[--color-text-muted]">Large</p>
+              <p className="text-xs text-text-muted">Large</p>
             </div>
           </div>
-          <div className="border border-[--color-border] rounded-[--radius-lg] overflow-hidden">
+          <div className="border border-border rounded-[--radius-lg] overflow-hidden">
             <PageSpinner />
           </div>
         </Section>
@@ -266,10 +266,10 @@ export default function DesignPage() {
               description="Revisá los datos antes de confirmar."
             >
               <div className="flex flex-col gap-4">
-                <p className="text-sm text-[--color-text-muted]">
+                <p className="text-sm text-text-muted">
                   iPhone 16 Pro — 256 GB · Titanio Negro
                 </p>
-                <p className="font-[--font-display] text-2xl font-bold text-[--color-text]">$1.299</p>
+                <p className="font-[--font-display] text-2xl font-bold text-text">$1.299</p>
                 <div className="flex gap-3 justify-end">
                   <Button variant="ghost" onClick={() => setModalOpen(false)}>Cancelar</Button>
                   <Button onClick={() => setModalOpen(false)}>Confirmar</Button>

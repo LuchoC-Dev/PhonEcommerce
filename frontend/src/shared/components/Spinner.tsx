@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+﻿import { HTMLAttributes } from "react";
 
 type SpinnerSize = "sm" | "md" | "lg";
 
@@ -23,7 +23,7 @@ function Spinner({ size = "md", label = "Cargando...", className = "", ...props 
     >
       <span
         className={[
-          "rounded-full border-[--color-border] border-t-[--color-primary] animate-spin",
+          "rounded-full border-border border-t-primary animate-spin",
           sizeClasses[size],
         ].join(" ")}
         aria-hidden="true"

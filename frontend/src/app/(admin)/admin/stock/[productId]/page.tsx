@@ -54,7 +54,7 @@ function ProductStockPage({ params }: { params: Promise<{ productId: string }> }
   if (error && !stockInfo) {
     return (
       <div className="p-8">
-        <p className="text-[--color-danger] text-center py-8">{error}</p>
+        <p className="text-danger text-center py-8">{error}</p>
       </div>
     )
   }

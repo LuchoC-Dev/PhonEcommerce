@@ -1,4 +1,4 @@
-import type { Product } from '@features/catalog/types/catalog.types'
+﻿import type { Product } from '@features/catalog/types/catalog.types'
 import { Badge } from '@shared/components/Badge'
 import { AddToCartButton } from './AddToCartButton'
 
@@ -20,18 +20,18 @@ export function ProductInfo({ product }: ProductInfoProps) {
       {/* Breadcrumb brand / category */}
       <div className="flex items-center gap-2">
         <Badge variant="default">{product.brand.name}</Badge>
-        <span className="text-[#3a3a48]">·</span>
+        <span className="text-border">·</span>
         <Badge variant="default">{product.category.name}</Badge>
       </div>
 
       {/* Nombre */}
-      <h1 className="text-3xl font-bold text-[#e0e0e8] leading-tight font-[--font-display]">
+      <h1 className="text-3xl font-bold text-text leading-tight font-[--font-display]">
         {product.name}
       </h1>
 
       {/* Precio */}
       <div className="flex items-baseline gap-3">
-        <span className="text-4xl font-bold text-white font-[--font-display]">
+        <span className="text-4xl font-bold text-text font-[--font-display]">
           {formatPrice(product.price)}
         </span>
         {product.stock > 0 && product.stock <= 5 && (
@@ -43,12 +43,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
       {/* Descripción */}
       {product.description && (
-        <p className="text-[#9090a0] text-sm leading-relaxed">
+        <p className="text-text-muted text-sm leading-relaxed">
           {product.description}
         </p>
       )}
 
-      <div className="border-t border-[#2a2a35]" />
+      <div className="border-t border-border" />
 
       {/* Carrito */}
       <AddToCartButton productId={product.id} stock={product.stock} />

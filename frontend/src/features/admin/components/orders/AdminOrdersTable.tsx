@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -57,7 +57,7 @@ function AdminOrdersTable({ orders, loading, error, page, totalPages, total, onP
   }
 
   if (error) {
-    return <p className="text-[--color-danger] text-center py-8">{error}</p>
+    return <p className="text-danger text-center py-8">{error}</p>
   }
 
   return (

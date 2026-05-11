@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { withAuth } from '@shared/components/withAuth'
 import { useCheckout } from '@features/orders/hooks/useCheckout'
@@ -12,10 +12,10 @@ function CheckoutPage() {
   const { step, preview, order, isLoading, error, submitShipping, confirmOrder, goBack } = useCheckout()
 
   return (
-    <div className="min-h-screen bg-[--color-bg] py-12 px-4">
+    <div className="min-h-screen bg-bg py-12 px-4">
       <div className="max-w-lg mx-auto flex flex-col gap-8">
         <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-[--color-text] font-[--font-display]">Checkout</h1>
+          <h1 className="text-2xl font-bold text-text font-[--font-display]">Checkout</h1>
 
           <div className="flex items-center gap-2">
             {STEPS.map((label, i) => (
@@ -25,10 +25,10 @@ function CheckoutPage() {
                     className={[
                       'w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold font-[--font-display]',
                       i < step
-                        ? 'bg-[--color-primary] text-white'
+                        ? 'bg-primary text-white'
                         : i === step
-                        ? 'bg-[--color-primary] text-white ring-2 ring-[--color-primary-light] ring-offset-2 ring-offset-[--color-bg]'
-                        : 'bg-[--color-surface] text-[--color-text-subtle] border border-[--color-border]',
+                        ? 'bg-primary text-white ring-2 ring-primary-light ring-offset-2 ring-offset-bg'
+                        : 'bg-surface text-text-subtle border border-border',
                     ].join(' ')}
                   >
                     {i < step ? (
@@ -42,31 +42,31 @@ function CheckoutPage() {
                   <span
                     className={[
                       'text-sm font-medium font-[--font-display]',
-                      i === step ? 'text-[--color-text]' : 'text-[--color-text-muted]',
+                      i === step ? 'text-text' : 'text-text-muted',
                     ].join(' ')}
                   >
                     {label}
                   </span>
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className={['flex-1 h-px w-6', i < step ? 'bg-[--color-primary]' : 'bg-[--color-border]'].join(' ')} />
+                  <div className={['flex-1 h-px w-6', i < step ? 'bg-primary' : 'bg-border'].join(' ')} />
                 )}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-[--color-card] border border-[--color-border] rounded-[--radius-xl] p-6">
+        <div className="bg-card border border-border rounded-[--radius-xl] p-6">
           {step === 0 && (
             <div className="flex flex-col gap-4">
-              <h2 className="text-base font-semibold text-[--color-text] font-[--font-display]">Datos de envío</h2>
+              <h2 className="text-base font-semibold text-text font-[--font-display]">Datos de envío</h2>
               <ShippingForm onSubmit={submitShipping} isLoading={isLoading} error={error} />
             </div>
           )}
 
           {step === 1 && preview && (
             <div className="flex flex-col gap-4">
-              <h2 className="text-base font-semibold text-[--color-text] font-[--font-display]">Resumen del pedido</h2>
+              <h2 className="text-base font-semibold text-text font-[--font-display]">Resumen del pedido</h2>
               <OrderPreviewStep
                 preview={preview}
                 onConfirm={confirmOrder}

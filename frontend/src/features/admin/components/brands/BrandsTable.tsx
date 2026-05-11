@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@shared/components/Button'
@@ -48,7 +48,7 @@ function BrandsTable({ brands, loading, error, onCreate, onUpdate, onDelete }: B
   }
 
   if (error) {
-    return <p className="text-[--color-danger] text-center py-8">{error}</p>
+    return <p className="text-danger text-center py-8">{error}</p>
   }
 
   return (

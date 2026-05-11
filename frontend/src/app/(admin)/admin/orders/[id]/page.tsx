@@ -71,7 +71,7 @@ function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   if (error && !order) {
     return (
       <div className="p-8">
-        <p className="text-[--color-danger] text-center py-8">{error}</p>
+        <p className="text-danger text-center py-8">{error}</p>
       </div>
     )
   }

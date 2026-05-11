@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+﻿import { HTMLAttributes } from "react";
 
 type BadgeVariant = "default" | "primary" | "success" | "warning" | "danger" | "info";
 
@@ -7,12 +7,12 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: "bg-[--color-surface] text-[--color-text-muted] border-[--color-border]",
-  primary: "bg-[--color-primary-muted] text-[--color-primary-light] border-[--color-primary]",
-  success: "bg-[--color-success-muted] text-[--color-success] border-[--color-success]",
-  warning: "bg-[--color-warning-muted] text-[--color-warning] border-[--color-warning]",
-  danger: "bg-[--color-danger-muted] text-[--color-danger] border-[--color-danger]",
-  info: "bg-[--color-info-muted] text-[--color-info] border-[--color-info]",
+  default: "bg-surface text-text-muted border-border",
+  primary: "bg-primary-muted text-primary-light border-primary",
+  success: "bg-success-muted text-success border-success",
+  warning: "bg-warning-muted text-warning border-warning",
+  danger: "bg-danger-muted text-danger border-danger",
+  info: "bg-info-muted text-info border-info",
 };
 
 function Badge({ variant = "default", children, className = "", ...props }: BadgeProps) {

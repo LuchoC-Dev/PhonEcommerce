@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, ReactNode } from "react";
 
@@ -49,8 +49,8 @@ function Modal({ open, onClose, title, description, children, size = "md" }: Mod
       ref={dialogRef}
       onClick={handleBackdropClick}
       className={[
-        "w-full rounded-xl border border-[#1e1e2e]",
-        "bg-[#0f0f17] p-0",
+        "w-full rounded-xl border border-border",
+        "bg-bg p-0",
         "backdrop:bg-black/70 backdrop:backdrop-blur-sm",
         "open:flex open:flex-col",
         "mx-auto",
@@ -61,25 +61,25 @@ function Modal({ open, onClose, title, description, children, size = "md" }: Mod
       aria-describedby={description ? "modal-description" : undefined}
     >
       {(title || description) && (
-        <div className="flex items-start justify-between p-6 border-b border-[#1e1e2e]">
+        <div className="flex items-start justify-between p-6 border-b border-border">
           <div>
             {title && (
               <h2
                 id="modal-title"
-                className="font-[--font-display] text-lg font-semibold text-[#f8fafc]"
+                className="font-[--font-display] text-lg font-semibold text-text"
               >
                 {title}
               </h2>
             )}
             {description && (
-              <p id="modal-description" className="mt-1 text-sm text-[#94a3b8]">
+              <p id="modal-description" className="mt-1 text-sm text-text-muted">
                 {description}
               </p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="ml-4 rounded-lg p-1.5 text-[#94a3b8] hover:bg-[#1e1e2e] hover:text-[#f8fafc] transition-colors"
+            className="ml-4 rounded-lg p-1.5 text-text-muted hover:bg-border hover:text-text transition-colors"
             aria-label="Cerrar"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

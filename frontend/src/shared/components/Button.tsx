@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef } from "react";
+﻿import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
@@ -11,13 +11,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-[--color-primary] text-white hover:bg-[--color-primary-hover] shadow-[--shadow-sm] hover:shadow-[--shadow-glow] disabled:bg-[--color-primary-muted] disabled:text-[--color-text-muted]",
+    "bg-primary text-white hover:bg-primary-hover shadow-[--shadow-sm] hover:shadow-[--shadow-glow] disabled:bg-primary-muted disabled:text-text-muted",
   secondary:
-    "bg-[--color-card] text-[--color-text] border border-[--color-border] hover:border-[--color-primary] hover:text-[--color-primary-light] disabled:opacity-50",
+    "bg-card text-text border border-border hover:border-primary hover:text-primary-light disabled:opacity-50",
   ghost:
-    "bg-transparent text-[--color-text-muted] hover:text-[--color-text] hover:bg-[--color-surface] disabled:opacity-40",
+    "bg-transparent text-text-muted hover:text-text hover:bg-surface disabled:opacity-40",
   danger:
-    "bg-[--color-danger] text-white hover:bg-red-600 shadow-[--shadow-sm] disabled:bg-[--color-danger-muted] disabled:text-[--color-text-muted]",
+    "bg-danger text-white hover:bg-red-600 shadow-[--shadow-sm] disabled:bg-danger-muted disabled:text-text-muted",
 };
 
 const sizeClasses: Record<Size, string> = {
@@ -46,7 +46,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={[
           "inline-flex items-center justify-center font-[--font-display] font-medium",
           "transition-all duration-150 cursor-pointer select-none",
-          "focus-visible:outline-2 focus-visible:outline-[--color-primary] focus-visible:outline-offset-2",
+          "focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2",
           "disabled:cursor-not-allowed",
           variantClasses[variant],
           sizeClasses[size],

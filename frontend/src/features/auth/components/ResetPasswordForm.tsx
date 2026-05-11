@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -21,8 +21,8 @@ export function ResetPasswordForm() {
   if (!token) {
     return (
       <div className="flex flex-col gap-4 text-center">
-        <p className="text-[--color-danger]">Enlace inválido o expirado.</p>
-        <Link href="/forgot-password" className="text-sm text-[--color-primary-light] hover:underline">
+        <p className="text-danger">Enlace inválido o expirado.</p>
+        <Link href="/forgot-password" className="text-sm text-primary-light hover:underline">
           Solicitar nuevo enlace
         </Link>
       </div>
@@ -77,7 +77,7 @@ export function ResetPasswordForm() {
       />
 
       {serverError && (
-        <p className="text-sm text-[--color-danger] bg-[--color-danger-muted] px-3 py-2 rounded-[--radius-md]">
+        <p className="text-sm text-danger bg-danger-muted px-3 py-2 rounded-[--radius-md]">
           {serverError}
         </p>
       )}

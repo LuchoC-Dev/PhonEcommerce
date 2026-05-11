@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { catalogService } from '@features/catalog/services/catalog.service'
 import type { Product } from '@features/catalog/types/catalog.types'
@@ -16,7 +16,7 @@ function ProductCardMinimal({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-[--radius-xl] border border-[--color-border] bg-[--color-card] shadow-[--shadow-sm] transition-all duration-200 hover:border-[--color-primary] hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+      className="group flex flex-col overflow-hidden rounded-[--radius-xl] border border-border bg-card shadow-[--shadow-sm] transition-all duration-200 hover:border-primary hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]"
     >
       <div className="relative aspect-[4/3] bg-[#1a1a2e] overflow-hidden">
         {primaryImage ? (
@@ -37,17 +37,17 @@ function ProductCardMinimal({ product }: { product: Product }) {
 
       <div className="flex flex-col flex-1 p-5">
         <div className="flex items-center gap-2 mb-2">
-          <span className="inline-flex items-center rounded-[--radius-full] bg-[#1e1e2e] border border-[--color-border-subtle] px-2.5 py-0.5 text-xs font-medium text-[--color-text-muted]">
+          <span className="inline-flex items-center rounded-[--radius-full] bg-[#1e1e2e] border border-border-subtle px-2.5 py-0.5 text-xs font-medium text-text-muted">
             {product.brand.name}
           </span>
         </div>
 
-        <h3 className="font-[--font-display] text-base font-semibold text-[--color-text] truncate">
+        <h3 className="font-[--font-display] text-base font-semibold text-text truncate">
           {product.name}
         </h3>
 
         <div className="mt-auto pt-4">
-          <span className="font-[--font-display] text-xl font-bold text-[--color-text]">
+          <span className="font-[--font-display] text-xl font-bold text-text">
             {formatPrice(product.price)}
           </span>
         </div>
@@ -71,10 +71,10 @@ export async function FeaturedProducts() {
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
       <div className="mb-10">
-        <h2 className="font-[--font-display] text-3xl font-bold text-[--color-text]">
+        <h2 className="font-[--font-display] text-3xl font-bold text-text">
           Destacados
         </h2>
-        <p className="mt-2 text-[--color-text-muted]">
+        <p className="mt-2 text-text-muted">
           Los mejores smartphones, seleccionados para vos.
         </p>
       </div>

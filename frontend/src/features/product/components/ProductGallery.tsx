@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
@@ -31,7 +31,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
 
   if (sorted.length === 0) {
     return (
-      <div className="aspect-square bg-[#1e1e22] rounded-2xl flex items-center justify-center text-[#6b6b7a]">
+      <div className="aspect-square bg-card rounded-2xl flex items-center justify-center text-text-subtle">
         Sin imagen
       </div>
     )
@@ -40,7 +40,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
   return (
     <div className="flex flex-col gap-4">
       {/* Imagen principal */}
-      <div className="relative aspect-square bg-[#1e1e22] rounded-2xl overflow-hidden group">
+      <div className="relative aspect-square bg-card rounded-2xl overflow-hidden group">
         <Image
           src={resolveImageUrl(active.url)}
           alt={active.altText ?? productName}
@@ -54,14 +54,14 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
             <button
               onClick={prev}
               aria-label="Anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#0a0a0a]/70 border border-[#2a2a35] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-[#6366f1]"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-surface/70 border border-border text-text flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-primary"
             >
               ‹
             </button>
             <button
               onClick={next}
               aria-label="Siguiente"
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#0a0a0a]/70 border border-[#2a2a35] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-[#6366f1]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-surface/70 border border-border text-text flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-primary"
             >
               ›
             </button>
@@ -76,7 +76,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 onClick={() => setActiveIndex(i)}
                 aria-label={`Imagen ${i + 1}`}
                 className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                  i === activeIndex ? 'bg-[#6366f1]' : 'bg-[#4a4a58]'
+                  i === activeIndex ? 'bg-primary' : 'bg-text-subtle'
                 }`}
               />
             ))}
@@ -93,8 +93,8 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
               onClick={() => setActiveIndex(i)}
               className={`relative flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-colors ${
                 i === activeIndex
-                  ? 'border-[#6366f1]'
-                  : 'border-[#2a2a35] hover:border-[#4a4a58]'
+                  ? 'border-primary'
+                  : 'border-border hover:border-text-subtle'
               }`}
             >
               <Image
@@ -102,7 +102,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 alt={img.altText ?? `${productName} ${i + 1}`}
                 fill
                 unoptimized
-                className="object-contain p-1 bg-[#1e1e22]"
+                className="object-contain p-1 bg-card"
               />
             </button>
           ))}

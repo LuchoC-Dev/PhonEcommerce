@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -46,7 +46,7 @@ function ProductsTable({ products, loading, error, page, totalPages, total, onPa
   }
 
   if (error) {
-    return <p className="text-[--color-danger] text-center py-8">{error}</p>
+    return <p className="text-danger text-center py-8">{error}</p>
   }
 
   if (products.length === 0) {

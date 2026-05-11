@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -61,7 +61,7 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      <h3 className="font-[--font-display] text-lg font-semibold text-[#f8fafc]">
+      <h3 className="font-[--font-display] text-lg font-semibold text-text">
         {title}
       </h3>
 
@@ -109,19 +109,19 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
             {...register('isDefault')}
             className="sr-only peer"
           />
-          <div className="w-9 h-5 rounded-full bg-[#1e1e2e] peer-checked:bg-[#4f46e5]/70 transition-colors duration-200" />
-          <div className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-[#94a3b8] peer-checked:bg-white peer-checked:translate-x-4 transition-all duration-200" />
+          <div className="w-9 h-5 rounded-full bg-border peer-checked:bg-primary/70 transition-colors duration-200" />
+          <div className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-text-muted peer-checked:bg-white peer-checked:translate-x-4 transition-all duration-200" />
         </div>
-        <span className="text-sm text-[#94a3b8]">
+        <span className="text-sm text-text-muted">
           Usar como dirección predeterminada
         </span>
       </label>
 
       <div className="flex items-center justify-end gap-3 pt-2">
-        <Button type="button" variant="ghost" onClick={onCancel} disabled={isLoading} className="!font-sans bg-transparent text-[#94a3b8] rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
+        <Button type="button" variant="ghost" onClick={onCancel} disabled={isLoading} className="!font-sans bg-transparent text-text-muted rounded-lg text-sm font-medium hover:bg-border hover:text-text">
           Cancelar
         </Button>
-        <Button type="submit" loading={isLoading} className="!font-sans bg-[#1e1e2e] text-white rounded-lg text-sm font-medium hover:bg-[#312e81]/60 hover:text-[#f8fafc]">
+        <Button type="submit" loading={isLoading} className="!font-sans bg-border text-text rounded-lg text-sm font-medium hover:bg-primary-muted/60 hover:text-text">
           Guardar
         </Button>
       </div>

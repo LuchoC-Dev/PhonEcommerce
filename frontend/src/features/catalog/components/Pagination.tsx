@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Button } from '@shared/components'
 import type { PaginationMeta } from '../types/catalog.types'
@@ -18,7 +18,7 @@ export function Pagination({ meta, onPageChange }: PaginationProps) {
 
   return (
     <div className="flex items-center justify-between pt-4">
-      <p className="text-sm text-[--color-text-subtle]">
+      <p className="text-sm text-text-subtle">
         {from}–{to} de {total} productos
       </p>
       <div className="flex items-center gap-2">
@@ -30,7 +30,7 @@ export function Pagination({ meta, onPageChange }: PaginationProps) {
         >
           ← Anterior
         </Button>
-        <span className="text-sm text-[--color-text-muted] min-w-[5rem] text-center">
+        <span className="text-sm text-text-muted min-w-[5rem] text-center">
           {page} / {totalPages}
         </span>
         <Button

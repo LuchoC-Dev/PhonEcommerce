@@ -1,4 +1,4 @@
-import type { Product } from '@features/catalog/types/catalog.types'
+﻿import type { Product } from '@features/catalog/types/catalog.types'
 
 interface ProductSpecsProps {
   product: Product
@@ -13,17 +13,17 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
   ]
 
   return (
-    <div className="rounded-2xl border border-[#2a2a35] bg-[#1a1a1f] overflow-hidden">
-      <div className="px-5 py-3 border-b border-[#2a2a35]">
-        <h3 className="text-sm font-semibold text-[#9090a0] uppercase tracking-wider">
+    <div className="rounded-2xl border border-border bg-card overflow-hidden">
+      <div className="px-5 py-3 border-b border-border">
+        <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider">
           Especificaciones
         </h3>
       </div>
-      <div className="divide-y divide-[#2a2a35]">
+      <div className="divide-y divide-border">
         {specs.map(({ label, value }) => (
           <div key={label} className="flex items-center px-5 py-3 gap-4">
-            <span className="w-28 text-sm text-[#6b6b7a] flex-shrink-0">{label}</span>
-            <span className="text-sm text-[#e0e0e8] font-medium">{value}</span>
+            <span className="w-28 text-sm text-text-subtle flex-shrink-0">{label}</span>
+            <span className="text-sm text-text font-medium">{value}</span>
           </div>
         ))}
       </div>

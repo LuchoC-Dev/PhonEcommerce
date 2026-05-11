@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+﻿import { InputHTMLAttributes, forwardRef } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -15,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-[#dde4ed] font-[--font-body]"
+            className="text-sm font-medium text-text font-[--font-body]"
           >
             {label}
           </label>
@@ -24,14 +24,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={[
-            "h-10 w-full rounded-xl border border-[#1e1e2e]",
-            "bg-[#0d0d14]/50 px-3 text-sm text-[#f8fafc]",
-            "placeholder:text-[#64748b]",
+            "h-10 w-full rounded-xl border border-border",
+            "bg-card/50 px-3 text-sm text-text",
+            "placeholder:text-text-subtle",
             "transition-colors duration-150",
-            "focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1]",
+            "focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             error
-              ? "border-[#f87171] focus:border-[#f87171] focus:ring-[#f87171]"
+              ? "border-danger focus:border-danger focus:ring-danger"
               : "",
             className,
           ].join(" ")}
@@ -40,12 +40,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="text-xs text-[#f87171]" role="alert">
+          <p id={`${inputId}-error`} className="text-xs text-danger" role="alert">
             {error}
           </p>
         )}
         {hint && !error && (
-          <p id={`${inputId}-hint`} className="text-xs text-[--color-text-subtle]">
+          <p id={`${inputId}-hint`} className="text-xs text-text-subtle">
             {hint}
           </p>
         )}

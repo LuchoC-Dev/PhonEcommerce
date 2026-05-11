@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Spinner } from '@shared/components'
 import { ProductCard } from './ProductCard'
@@ -22,7 +22,7 @@ export function ProductGrid({ products, loading, error }: ProductGridProps) {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-3 text-center">
-        <p className="text-[--color-text-muted]">{error}</p>
+        <p className="text-text-muted">{error}</p>
       </div>
     )
   }
@@ -31,7 +31,7 @@ export function ProductGrid({ products, loading, error }: ProductGridProps) {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-3 text-center">
         <span className="text-5xl opacity-20">🔍</span>
-        <p className="text-[--color-text-muted]">No se encontraron productos con esos filtros.</p>
+        <p className="text-text-muted">No se encontraron productos con esos filtros.</p>
       </div>
     )
   }

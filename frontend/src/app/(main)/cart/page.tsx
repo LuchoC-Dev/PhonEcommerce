@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -31,14 +31,14 @@ export default function CartPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center px-4">
-        <svg className="w-16 h-16 text-[#2a2a35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-16 h-16 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9Z" />
         </svg>
-        <h1 className="font-[--font-display] text-2xl font-bold text-white">Iniciá sesión para ver tu carrito</h1>
-        <p className="text-[#9090a0] max-w-sm">Necesitás una cuenta para guardar productos en tu carrito.</p>
+        <h1 className="font-[--font-display] text-2xl font-bold text-text">Iniciá sesión para ver tu carrito</h1>
+        <p className="text-text-muted max-w-sm">Necesitás una cuenta para guardar productos en tu carrito.</p>
         <Link
           href="/login"
-          className="mt-2 inline-flex items-center px-6 py-3 rounded-xl bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold transition-colors"
+          className="mt-2 inline-flex items-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white font-semibold transition-colors"
         >
           Iniciar sesión
         </Link>
@@ -57,14 +57,14 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center px-4">
-        <svg className="w-16 h-16 text-[#2a2a35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-16 h-16 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
-        <h1 className="font-[--font-display] text-2xl font-bold text-white">Tu carrito está vacío</h1>
-        <p className="text-[#9090a0]">Explorá nuestro catálogo y encontrá tu próximo teléfono.</p>
+        <h1 className="font-[--font-display] text-2xl font-bold text-text">Tu carrito está vacío</h1>
+        <p className="text-text-muted">Explorá nuestro catálogo y encontrá tu próximo teléfono.</p>
         <Link
           href="/catalog"
-          className="mt-2 inline-flex items-center px-6 py-3 rounded-xl bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold transition-colors"
+          className="mt-2 inline-flex items-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white font-semibold transition-colors"
         >
           Explorar catálogo
         </Link>
@@ -82,15 +82,15 @@ export default function CartPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="font-[--font-display] text-3xl font-bold text-white">
+        <h1 className="font-[--font-display] text-3xl font-bold text-text">
           Carrito
-          <span className="ml-3 text-lg font-normal text-[#9090a0]">
+          <span className="ml-3 text-lg font-normal text-text-muted">
             ({itemCount} {itemCount === 1 ? 'ítem' : 'ítems'})
           </span>
         </h1>
         <button
           onClick={() => setShowConfirmClear(true)}
-          className="text-sm text-[#9090a0] hover:text-red-400 transition-colors"
+          className="text-sm text-text-muted hover:text-danger transition-colors"
         >
           Vaciar carrito
         </button>
@@ -104,11 +104,11 @@ export default function CartPage() {
             return (
               <div
                 key={item.productId}
-                className="flex gap-4 p-4 rounded-2xl bg-[#1a1a2e] border border-[#2d3748]"
+                className="flex gap-4 p-4 rounded-2xl bg-card border border-border"
               >
                 {/* Imagen */}
                 <Link href={`/products/${item.slug}`} className="flex-shrink-0">
-                  <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+                  <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-surface flex items-center justify-center">
                     {item.image ? (
                       <Image
                         src={item.image}
@@ -118,7 +118,7 @@ export default function CartPage() {
                         sizes="96px"
                       />
                     ) : (
-                      <svg className="w-10 h-10 text-[#2a2a35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <svg className="w-10 h-10 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 3.75h3m-3 3.75h3" />
                       </svg>
                     )}
@@ -129,7 +129,7 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0">
                   <Link
                     href={`/products/${item.slug}`}
-                    className="font-medium text-white hover:text-[#818cf8] transition-colors line-clamp-2"
+                    className="font-medium text-text hover:text-primary-light transition-colors line-clamp-2"
                   >
                     {item.name}
                   </Link>
@@ -145,25 +145,25 @@ export default function CartPage() {
 
                   <div className="flex items-center justify-between mt-3">
                     {/* Cantidad */}
-                    <div className="flex items-center border border-[#2a2a35] rounded-lg overflow-hidden">
+                    <div className="flex items-center border border-border rounded-lg overflow-hidden">
                       <button
                         onClick={() => {
                           if (item.quantity <= 1) removeItem(item.productId)
                           else updateItem(item.productId, item.quantity - 1)
                         }}
                         disabled={isLoading}
-                        className="w-9 h-9 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40"
+                        className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40"
                         aria-label="Disminuir cantidad"
                       >
                         −
                       </button>
-                      <span className="w-10 text-center text-sm font-medium text-white select-none">
+                      <span className="w-10 text-center text-sm font-medium text-text select-none">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateItem(item.productId, item.quantity + 1)}
                         disabled={isLoading}
-                        className="w-9 h-9 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40"
+                        className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40"
                         aria-label="Aumentar cantidad"
                       >
                         +
@@ -172,15 +172,15 @@ export default function CartPage() {
 
                     <div className="text-right">
                       {hasPriceChange && (
-                        <p className="text-xs text-[#6b6b7a] line-through">
+                        <p className="text-xs text-text-subtle line-through">
                           {formatPrice(item.priceAtAdd * item.quantity)}
                         </p>
                       )}
-                      <p className="font-semibold text-white">
+                      <p className="font-semibold text-text">
                         {formatPrice(item.currentPrice * item.quantity)}
                       </p>
                       {item.quantity > 1 && (
-                        <p className="text-xs text-[#9090a0]">
+                        <p className="text-xs text-text-muted">
                           {formatPrice(item.currentPrice)} c/u
                         </p>
                       )}
@@ -192,7 +192,7 @@ export default function CartPage() {
                 <button
                   onClick={() => removeItem(item.productId)}
                   disabled={isLoading}
-                  className="self-start p-2 text-[#6b6b7a] hover:text-red-400 transition-colors disabled:opacity-40 rounded-lg hover:bg-[#2a2a35]"
+                  className="self-start p-2 text-text-subtle hover:text-danger transition-colors disabled:opacity-40 rounded-lg hover:bg-border"
                   aria-label={`Eliminar ${item.name}`}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -206,21 +206,21 @@ export default function CartPage() {
 
         {/* Resumen del pedido */}
         <div className="lg:col-span-1">
-          <div className="sticky top-24 rounded-2xl bg-[#1a1a2e] border border-[#2d3748] p-6">
-            <h2 className="font-[--font-display] text-lg font-semibold text-white mb-4">
+          <div className="sticky top-24 rounded-2xl bg-card border border-border p-6">
+            <h2 className="font-[--font-display] text-lg font-semibold text-text mb-4">
               Resumen del pedido
             </h2>
 
             <div className="space-y-3 text-sm mb-4">
-              <div className="flex justify-between text-[#9090a0]">
+              <div className="flex justify-between text-text-muted">
                 <span>Subtotal ({itemCount} {itemCount === 1 ? 'ítem' : 'ítems'})</span>
                 <span>{formatPrice(total)}</span>
               </div>
-              <div className="flex justify-between text-[#9090a0]">
+              <div className="flex justify-between text-text-muted">
                 <span>Envío</span>
-                <span className="text-[#22c55e]">Gratis</span>
+                <span className="text-success">Gratis</span>
               </div>
-              <div className="border-t border-[#2d3748] pt-3 flex justify-between font-semibold text-white">
+              <div className="border-t border-border pt-3 flex justify-between font-semibold text-text">
                 <span>Total</span>
                 <span className="text-lg">{formatPrice(total)}</span>
               </div>
@@ -237,7 +237,7 @@ export default function CartPage() {
 
             <Link
               href="/catalog"
-              className="mt-3 block text-center text-sm text-[#9090a0] hover:text-white transition-colors"
+              className="mt-3 block text-center text-sm text-text-muted hover:text-text transition-colors"
             >
               ← Continuar comprando
             </Link>

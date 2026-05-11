@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 
@@ -17,10 +17,10 @@ interface ToastContextValue {
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 const typeStyles: Record<ToastType, string> = {
-  success: "border-[--color-success] text-[--color-success]",
-  error: "border-[--color-danger] text-[--color-danger]",
-  warning: "border-[--color-warning] text-[--color-warning]",
-  info: "border-[--color-info] text-[--color-info]",
+  success: "border-success text-success",
+  error: "border-danger text-danger",
+  warning: "border-warning text-warning",
+  info: "border-info text-info",
 };
 
 const typeIcons: Record<ToastType, string> = {
@@ -36,7 +36,7 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: () => void }) 
       role="alert"
       aria-live="polite"
       className={[
-        "flex items-start gap-3 rounded-[--radius-lg] border bg-[--color-card] p-4",
+        "flex items-start gap-3 rounded-[--radius-lg] border bg-card p-4",
         "shadow-[--shadow-lg] min-w-72 max-w-sm",
         "animate-in slide-in-from-right-4 fade-in duration-200",
         typeStyles[toast.type],
@@ -45,10 +45,10 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: () => void }) 
       <span className="text-lg leading-none font-bold mt-0.5" aria-hidden="true">
         {typeIcons[toast.type]}
       </span>
-      <p className="flex-1 text-sm text-[--color-text]">{toast.message}</p>
+      <p className="flex-1 text-sm text-text">{toast.message}</p>
       <button
         onClick={onRemove}
-        className="text-[--color-text-muted] hover:text-[--color-text] transition-colors"
+        className="text-text-muted hover:text-text transition-colors"
         aria-label="Cerrar notificación"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

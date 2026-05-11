@@ -1,28 +1,28 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="footer-gradient border-t border-[--color-border] mt-auto">
+    <footer className="footer-gradient border-t border-border mt-auto">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link
               href="/"
-              className="font-[--font-display] text-lg font-bold text-[--color-text] hover:text-[--color-primary-light] transition-colors"
+              className="font-[--font-display] text-lg font-bold text-text hover:text-primary-light transition-colors"
             >
               📱 ImNotPhound
             </Link>
-            <p className="mt-3 text-sm text-[--color-text-muted] max-w-xs">
+            <p className="mt-3 text-sm text-text-muted max-w-xs">
               Tu destino para encontrar el teléfono perfecto. Catálogo curado de smartphones premium.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-[--font-display] text-sm font-semibold text-[--color-text] mb-4">
+            <h4 className="font-[--font-display] text-sm font-semibold text-text mb-4">
               Tienda
             </h4>
             <ul className="space-y-3">
@@ -34,7 +34,7 @@ function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[--color-text-muted] hover:text-[--color-text] transition-colors"
+                    className="text-sm text-text-muted hover:text-text transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -44,7 +44,7 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-[--font-display] text-sm font-semibold text-[--color-text] mb-4">
+            <h4 className="font-[--font-display] text-sm font-semibold text-text mb-4">
               Soporte
             </h4>
             <ul className="space-y-3">
@@ -56,7 +56,7 @@ function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[--color-text-muted] hover:text-[--color-text] transition-colors"
+                    className="text-sm text-text-muted hover:text-text transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -66,15 +66,15 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-[--color-border] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[--color-text-subtle]">
+        <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-text-subtle">
             © {year} ImNotPhound. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/privacy" className="text-xs text-[--color-text-subtle] hover:text-[--color-text-muted] transition-colors">
+            <Link href="/privacy" className="text-xs text-text-subtle hover:text-text-muted transition-colors">
               Privacidad
             </Link>
-            <Link href="/terms" className="text-xs text-[--color-text-subtle] hover:text-[--color-text-muted] transition-colors">
+            <Link href="/terms" className="text-xs text-text-subtle hover:text-text-muted transition-colors">
               Términos
             </Link>
           </div>

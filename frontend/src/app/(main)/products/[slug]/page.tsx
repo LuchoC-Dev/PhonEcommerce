@@ -17,7 +17,7 @@ export default function ProductPage({ params }: PageProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#161618] flex items-center justify-center">
+      <div className="min-h-screen bg-bg flex items-center justify-center">
         <Spinner size="lg" />
       </div>
     )
@@ -25,14 +25,14 @@ export default function ProductPage({ params }: PageProps) {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-[#161618] flex items-center justify-center">
-        <p className="text-[#9090a0]">{error ?? 'Producto no encontrado.'}</p>
+      <div className="min-h-screen bg-bg flex items-center justify-center">
+        <p className="text-text-muted">{error ?? 'Producto no encontrado.'}</p>
       </div>
     )
   }
 
   return (
-    <main className="min-h-screen bg-[#161618]">
+    <main className="min-h-screen bg-bg">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Galería */}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "../globals.css";
 import { Navbar } from "@shared/components/Navbar";
@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="es"
       className={`${spaceGrotesk.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[--color-bg] text-[--color-text]">
+      <body className="min-h-full flex flex-col bg-bg text-text">
         <AuthProvider>
           <CartSync />
           <Navbar />

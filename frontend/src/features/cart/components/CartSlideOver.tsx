@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
@@ -50,21 +50,21 @@ export function CartSlideOver() {
       {/* Panel */}
       <div
         ref={panelRef}
-        className="relative flex flex-col w-full max-w-md bg-[#161618] border-l border-[#1e2028] shadow-2xl animate-slide-in-right"
+        className="relative flex flex-col w-full max-w-md bg-bg border-l border-border shadow-2xl animate-slide-in-right"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e2028]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
           <div>
-            <h2 className="font-[--font-display] text-lg font-semibold text-white">
+            <h2 className="font-[--font-display] text-lg font-semibold text-text">
               Carrito
             </h2>
-            <p className="text-sm text-[#9090a0]">
+            <p className="text-sm text-text-muted">
               {itemCount} {itemCount === 1 ? 'ítem' : 'ítems'}
             </p>
           </div>
           <button
             onClick={close}
-            className="flex items-center justify-center w-8 h-8 rounded-lg text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-lg text-text-muted hover:text-text hover:bg-border transition-colors"
             aria-label="Cerrar carrito"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,18 +77,18 @@ export function CartSlideOver() {
         <div className="flex-1 overflow-y-auto px-6 py-4">
           {isLoading && items.length === 0 ? (
             <div className="flex items-center justify-center h-40">
-              <div className="w-6 h-6 border-2 border-[#6366f1] border-t-transparent rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
           ) : items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-48 text-center gap-3">
-              <svg className="w-12 h-12 text-[#2a2a35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-12 h-12 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
               </svg>
-              <p className="text-[#9090a0] text-sm">Tu carrito está vacío</p>
+              <p className="text-text-muted text-sm">Tu carrito está vacío</p>
               <Link
                 href="/catalog"
                 onClick={close}
-                className="text-sm text-[#6366f1] hover:text-[#818cf8] transition-colors"
+                className="text-sm text-primary hover:text-primary-light transition-colors"
               >
                 Explorar catálogo →
               </Link>
@@ -98,9 +98,9 @@ export function CartSlideOver() {
               {items.map((item) => {
                 const hasPriceChange = item.currentPrice !== item.priceAtAdd
                 return (
-                  <li key={item.productId} className="flex gap-3 py-3 border-b border-[#1e2028] last:border-0">
+                  <li key={item.productId} className="flex gap-3 py-3 border-b border-border last:border-0">
                     {/* Imagen */}
-                    <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+                    <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-surface flex items-center justify-center">
                       {item.image ? (
                         <Image
                           src={item.image}
@@ -110,7 +110,7 @@ export function CartSlideOver() {
                           sizes="64px"
                         />
                       ) : (
-                        <svg className="w-8 h-8 text-[#2a2a35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <svg className="w-8 h-8 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 3.75h3m-3 3.75h3" />
                         </svg>
                       )}
@@ -121,7 +121,7 @@ export function CartSlideOver() {
                       <Link
                         href={`/products/${item.slug}`}
                         onClick={close}
-                        className="text-sm font-medium text-white hover:text-[#818cf8] transition-colors line-clamp-2"
+                        className="text-sm font-medium text-text hover:text-primary-light transition-colors line-clamp-2"
                       >
                         {item.name}
                       </Link>
@@ -134,7 +134,7 @@ export function CartSlideOver() {
 
                       {/* Controles de cantidad */}
                       <div className="flex items-center justify-between mt-2">
-                        <div className="flex items-center border border-[#2a2a35] rounded-lg overflow-hidden">
+                        <div className="flex items-center border border-border rounded-lg overflow-hidden">
                           <button
                             onClick={() => {
                               if (item.quantity <= 1) {
@@ -144,25 +144,25 @@ export function CartSlideOver() {
                               }
                             }}
                             disabled={isLoading}
-                            className="w-7 h-7 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40 text-sm"
+                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 text-sm"
                             aria-label="Disminuir cantidad"
                           >
                             −
                           </button>
-                          <span className="w-8 text-center text-sm text-white select-none">
+                          <span className="w-8 text-center text-sm text-text select-none">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateItem(item.productId, item.quantity + 1)}
                             disabled={isLoading}
-                            className="w-7 h-7 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40 text-sm"
+                            className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 text-sm"
                             aria-label="Aumentar cantidad"
                           >
                             +
                           </button>
                         </div>
 
-                        <span className="text-sm font-semibold text-white">
+                        <span className="text-sm font-semibold text-text">
                           {formatPrice(item.currentPrice * item.quantity)}
                         </span>
                       </div>
@@ -172,7 +172,7 @@ export function CartSlideOver() {
                     <button
                       onClick={() => removeItem(item.productId)}
                       disabled={isLoading}
-                      className="flex-shrink-0 self-start p-1 text-[#6b6b7a] hover:text-red-400 transition-colors disabled:opacity-40"
+                      className="flex-shrink-0 self-start p-1 text-text-subtle hover:text-danger transition-colors disabled:opacity-40"
                       aria-label={`Eliminar ${item.name}`}
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,16 +188,16 @@ export function CartSlideOver() {
 
         {/* Footer con total y acciones */}
         {items.length > 0 && (
-          <div className="px-6 py-4 border-t border-[#1e2028] space-y-3">
-            <div className="flex items-center justify-between text-sm text-[#9090a0]">
+          <div className="px-6 py-4 border-t border-border space-y-3">
+            <div className="flex items-center justify-between text-sm text-text-muted">
               <span>{itemCount} {itemCount === 1 ? 'ítem' : 'ítems'}</span>
-              <span className="font-semibold text-lg text-white">{formatPrice(total)}</span>
+              <span className="font-semibold text-lg text-text">{formatPrice(total)}</span>
             </div>
 
             <Link
               href="/checkout"
               onClick={close}
-              className="block w-full text-center py-3 px-4 rounded-xl bg-[#6366f1] hover:bg-[#4f46e5] text-white font-semibold transition-colors"
+              className="block w-full text-center py-3 px-4 rounded-xl bg-primary hover:bg-primary-hover text-white font-semibold transition-colors"
             >
               Ir al checkout
             </Link>
@@ -205,7 +205,7 @@ export function CartSlideOver() {
             <Link
               href="/cart"
               onClick={close}
-              className="block w-full text-center py-2 px-4 text-sm text-[#9090a0] hover:text-white transition-colors"
+              className="block w-full text-center py-2 px-4 text-sm text-text-muted hover:text-text transition-colors"
             >
               Ver carrito completo
             </Link>

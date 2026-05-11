@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -103,7 +103,7 @@ export function ShippingForm({ defaultValues, onSubmit, isLoading, error }: Prop
       </div>
 
       {error && (
-        <p className="text-sm text-[--color-danger]" role="alert">{error}</p>
+        <p className="text-sm text-danger" role="alert">{error}</p>
       )}
 
       <Button type="submit" loading={isLoading} size="lg" className="mt-2">

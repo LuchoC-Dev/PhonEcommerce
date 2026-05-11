@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@shared/components/Button'
@@ -25,22 +25,22 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
   }
 
   return (
-    <div className="bg-[#0d0d14]/50 border border-[#1e1e2e] rounded-xl p-5">
+    <div className="bg-card/50 border border-border rounded-xl p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 space-y-1.5">
           <div className="flex items-center gap-2 flex-wrap">
-            <p className="font-medium text-[#f8fafc]">{address.street}</p>
+            <p className="font-medium text-text">{address.street}</p>
             {address.isDefault && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-[#4f46e5]/40 bg-[#312e81]/40 px-2.5 py-0.5 text-xs font-medium text-[#818cf8]">
+              <span className="inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary-muted/40 px-2.5 py-0.5 text-xs font-medium text-primary-light">
                 Predeterminada
               </span>
             )}
           </div>
-          <p className="text-sm text-[#94a3b8]">
+          <p className="text-sm text-text-muted">
             {[address.city, address.state, address.country].filter(Boolean).join(', ')}
           </p>
           {address.zipCode && (
-            <p className="text-xs text-[#64748b]">CP: {address.zipCode}</p>
+            <p className="text-xs text-text-subtle">CP: {address.zipCode}</p>
           )}
         </div>
 
@@ -48,7 +48,7 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
           <button
             type="button"
             onClick={onEdit}
-            className="p-2 rounded-lg text-[#94a3b8] hover:bg-[#1e1e2e] hover:text-[#f8fafc] transition-colors duration-150 cursor-pointer"
+            className="p-2 rounded-lg text-text-muted hover:bg-border hover:text-text transition-colors duration-150 cursor-pointer"
             aria-label="Editar dirección"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -59,7 +59,7 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
             type="button"
             onClick={() => setShowConfirm(true)}
             disabled={showConfirm}
-            className="p-2 rounded-lg text-[#94a3b8] hover:bg-[#f87171]/10 hover:text-[#f87171] transition-colors duration-150 disabled:opacity-40 cursor-pointer"
+            className="p-2 rounded-lg text-text-muted hover:bg-danger/10 hover:text-danger transition-colors duration-150 disabled:opacity-40 cursor-pointer"
             aria-label="Eliminar dirección"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -70,8 +70,8 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
       </div>
 
       {showConfirm && (
-        <div className="mt-4 pt-4 border-t border-[#1e1e2e] flex items-center gap-3">
-          <span className="text-sm text-[#94a3b8]">
+        <div className="mt-4 pt-4 border-t border-border flex items-center gap-3">
+          <span className="text-sm text-text-muted">
             ¿Seguro que querés eliminar esta dirección?
           </span>
           <Button variant="danger" size="sm" loading={deleting} onClick={handleDelete} className="!font-sans text-sm font-medium rounded-lg">
@@ -82,7 +82,7 @@ export function AddressCard({ address, onEdit, onDelete }: AddressCardProps) {
             size="sm"
             onClick={() => setShowConfirm(false)}
             disabled={deleting}
-            className="!font-sans text-sm font-medium text-[#94a3b8] hover:bg-[#1e1e2e] hover:text-[#f8fafc] rounded-lg"
+            className="!font-sans text-sm font-medium text-text-muted hover:bg-border hover:text-text rounded-lg"
           >
             No
           </Button>

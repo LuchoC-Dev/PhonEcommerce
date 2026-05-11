@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes, forwardRef } from "react";
+﻿import { SelectHTMLAttributes, forwardRef } from "react";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
@@ -16,7 +16,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-[--color-text-muted] font-[--font-body]"
+            className="text-sm font-medium text-text-muted font-[--font-body]"
           >
             {label}
           </label>
@@ -26,13 +26,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             id={inputId}
             className={[
-              "h-10 w-full appearance-none rounded-[--radius-md] border border-[--color-border]",
-              "bg-[--color-card] px-3 pr-9 text-sm text-[--color-text]",
+              "h-10 w-full appearance-none rounded-[--radius-md] border border-border",
+              "bg-card px-3 pr-9 text-sm text-text",
               "transition-colors duration-150 cursor-pointer",
-              "focus:outline-none focus:border-[--color-primary] focus:ring-1 focus:ring-[--color-primary]",
+              "focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               error
-                ? "border-[--color-danger] focus:border-[--color-danger] focus:ring-[--color-danger]"
+                ? "border-danger focus:border-danger focus:ring-danger"
                 : "",
               className,
             ].join(" ")}
@@ -48,19 +48,19 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             {children}
           </select>
           <span
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[--color-text-muted]"
+            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-text-muted"
             aria-hidden="true"
           >
             ▾
           </span>
         </div>
         {error && (
-          <p id={`${inputId}-error`} className="text-xs text-[--color-danger]" role="alert">
+          <p id={`${inputId}-error`} className="text-xs text-danger" role="alert">
             {error}
           </p>
         )}
         {hint && !error && (
-          <p id={`${inputId}-hint`} className="text-xs text-[--color-text-subtle]">
+          <p id={`${inputId}-hint`} className="text-xs text-text-subtle">
             {hint}
           </p>
         )}

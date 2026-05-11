@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Button } from '@shared/components'
 import type { Brand, Category, ProductFilters } from '../types/catalog.types'
@@ -32,8 +32,8 @@ function CategoryTree({
               depth > 0 ? 'pl-5' : ''
             } ${
               selectedId === cat.id
-                ? 'bg-[#6366f1] text-white font-medium'
-                : 'text-[--color-text-muted] hover:text-[--color-text] hover:bg-[#ffffff08]'
+                ? 'bg-primary text-white font-medium'
+                : 'text-text-muted hover:text-text hover:bg-border'
             }`}
           >
             {cat.name}
@@ -78,13 +78,13 @@ export function FilterSidebar({
   return (
     <aside className="flex flex-col gap-6 w-full">
       <div className="flex items-center justify-between">
-        <h2 className="font-[--font-display] text-sm font-semibold text-[--color-text] uppercase tracking-wider">
+        <h2 className="font-[--font-display] text-sm font-semibold text-text uppercase tracking-wider">
           Filtros
         </h2>
         {hasActiveFilters && (
           <button
             onClick={onReset}
-            className="text-xs text-[#6366f1] hover:text-[#818cf8] transition-colors"
+            className="text-xs text-primary hover:text-primary-light transition-colors"
           >
             Limpiar
           </button>
@@ -93,7 +93,7 @@ export function FilterSidebar({
 
       {/* Marcas */}
       <div className="flex flex-col gap-2">
-        <p className="text-xs font-semibold text-[--color-text-subtle] uppercase tracking-wider">Marca</p>
+        <p className="text-xs font-semibold text-text-subtle uppercase tracking-wider">Marca</p>
         <div className="flex flex-col gap-0.5">
           {brands.map((brand) => (
             <button
@@ -101,8 +101,8 @@ export function FilterSidebar({
               onClick={() => handleBrandClick(brand.id)}
               className={`w-full text-left text-sm px-2 py-1.5 rounded-[--radius-md] transition-colors ${
                 filters.brandId === brand.id
-                  ? 'bg-[#6366f1] text-white font-medium'
-                  : 'text-[--color-text-muted] hover:text-[--color-text] hover:bg-[#ffffff08]'
+                  ? 'bg-primary text-white font-medium'
+                  : 'text-text-muted hover:text-text hover:bg-border'
               }`}
             >
               {brand.name}
@@ -114,7 +114,7 @@ export function FilterSidebar({
       {/* Categorías */}
       {categories.length > 0 && (
         <div className="flex flex-col gap-2">
-          <p className="text-xs font-semibold text-[--color-text-subtle] uppercase tracking-wider">Categoría</p>
+          <p className="text-xs font-semibold text-text-subtle uppercase tracking-wider">Categoría</p>
           <CategoryTree
             categories={categories}
             selectedId={filters.categoryId}
@@ -125,21 +125,21 @@ export function FilterSidebar({
 
       {/* Precio */}
       <div className="flex flex-col gap-2">
-        <p className="text-xs font-semibold text-[--color-text-subtle] uppercase tracking-wider">Precio</p>
+        <p className="text-xs font-semibold text-text-subtle uppercase tracking-wider">Precio</p>
         <div className="flex gap-2">
           <input
             type="number"
             placeholder="Mín"
             value={filters.minPrice ?? ''}
             onChange={(e) => handlePriceChange('minPrice', e.target.value)}
-            className="w-full bg-[#1a1a2e] border border-[--color-border] rounded-[--radius-md] px-3 py-2 text-sm text-[--color-text] placeholder:text-[--color-text-subtle] focus:outline-none focus:border-[#6366f1]"
+            className="w-full bg-card border border-border rounded-[--radius-md] px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
           />
           <input
             type="number"
             placeholder="Máx"
             value={filters.maxPrice ?? ''}
             onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
-            className="w-full bg-[#1a1a2e] border border-[--color-border] rounded-[--radius-md] px-3 py-2 text-sm text-[--color-text] placeholder:text-[--color-text-subtle] focus:outline-none focus:border-[#6366f1]"
+            className="w-full bg-card border border-border rounded-[--radius-md] px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
           />
         </div>
       </div>

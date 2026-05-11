@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -27,7 +27,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card hoverable padded={false} className="flex flex-col overflow-hidden">
-      <div className="relative aspect-[4/3] bg-[#1a1a2e] overflow-hidden">
+      <div className="relative aspect-[4/3] bg-card overflow-hidden">
         {primaryImage ? (
           <Image
             src={resolveImageUrl(primaryImage.url)}
@@ -47,7 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <CardHeader className="px-5 pt-4">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <p className="text-xs text-[--color-text-subtle] mb-0.5">{product.brand.name}</p>
+            <p className="text-xs text-text-subtle mb-0.5">{product.brand.name}</p>
             <CardTitle className="truncate">{product.name}</CardTitle>
             {product.category && (
               <CardDescription>{product.category.name}</CardDescription>
@@ -59,7 +59,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <CardFooter className="mt-auto mx-5 mb-5">
         <div className="flex items-center justify-between gap-2">
-          <span className="font-[--font-display] text-xl font-bold text-[--color-text]">
+          <span className="font-[--font-display] text-xl font-bold text-text">
             {formatPrice(product.price)}
           </span>
           <Link href={`/products/${product.slug}`}>

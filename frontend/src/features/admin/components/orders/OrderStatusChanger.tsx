@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@shared/components/Button'
@@ -95,8 +95,8 @@ function OrderStatusChanger({ currentStatus, onUpdate }: OrderStatusChangerProps
           rows={3}
         />
 
-        {error && <p className="text-sm text-[--color-danger]">{error}</p>}
-        {success && <p className="text-sm text-[--color-success]">{success}</p>}
+        {error && <p className="text-sm text-danger">{error}</p>}
+        {success && <p className="text-sm text-success">{success}</p>}
 
         <Button onClick={handleSubmit} loading={loading}>
           Actualizar estado

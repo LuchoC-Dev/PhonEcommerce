@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -30,11 +30,11 @@ export function ForgotPasswordForm() {
     return (
       <div className="flex flex-col gap-4 text-center">
         <div className="text-4xl">📬</div>
-        <p className="text-[--color-text]">
-          Si existe una cuenta con <span className="text-[--color-primary-light] font-medium">{email}</span>,
+        <p className="text-text">
+          Si existe una cuenta con <span className="text-primary-light font-medium">{email}</span>,
           recibirás un correo con las instrucciones.
         </p>
-        <Link href="/login" className="text-sm text-[--color-primary-light] hover:underline">
+        <Link href="/login" className="text-sm text-primary-light hover:underline">
           Volver al inicio de sesión
         </Link>
       </div>
@@ -55,7 +55,7 @@ export function ForgotPasswordForm() {
       />
 
       {error && (
-        <p className="text-sm text-[--color-danger] bg-[--color-danger-muted] px-3 py-2 rounded-[--radius-md]">
+        <p className="text-sm text-danger bg-danger-muted px-3 py-2 rounded-[--radius-md]">
           {error}
         </p>
       )}
@@ -64,8 +64,8 @@ export function ForgotPasswordForm() {
         Enviar instrucciones
       </Button>
 
-      <p className="text-center text-sm text-[--color-text-muted]">
-        <Link href="/login" className="text-[--color-primary-light] hover:underline">
+      <p className="text-center text-sm text-text-muted">
+        <Link href="/login" className="text-primary-light hover:underline">
           Volver al inicio de sesión
         </Link>
       </p>

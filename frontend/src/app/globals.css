@@ -2,13 +2,13 @@
 
 @theme inline {
   /* === Colores base === */
-  --color-bg: #14141d;
+  --color-bg: #0f0f17;
 
-  --color-surface: #111827;
-  --color-card: #1a1a2e;
-  --color-border: #2d3748;
+  --color-surface: #0d0d14;
+  --color-card: #0d0d14;
+  --color-border: #1e1e2e;
 
-  --color-border-subtle: #1e293b;
+  --color-border-subtle: #17171f;
 
   /* === Primario: Índigo === */
   --color-primary: #6366f1;

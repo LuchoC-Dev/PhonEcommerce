@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -70,7 +70,7 @@ export function RegisterForm() {
       <Input label="Confirmar contraseña" type="password" placeholder="••••••••" autoComplete="new-password" required {...field('confirmPassword')} />
 
       {serverError && (
-        <p className="text-sm text-[--color-danger] bg-[--color-danger-muted] px-3 py-2 rounded-[--radius-md]">
+        <p className="text-sm text-danger bg-danger-muted px-3 py-2 rounded-[--radius-md]">
           {serverError}
         </p>
       )}
@@ -79,9 +79,9 @@ export function RegisterForm() {
         Crear cuenta
       </Button>
 
-      <p className="text-center text-sm text-[--color-text-muted]">
+      <p className="text-center text-sm text-text-muted">
         ¿Ya tenés cuenta?{' '}
-        <Link href="/login" className="text-[--color-primary-light] hover:underline font-medium">
+        <Link href="/login" className="text-primary-light hover:underline font-medium">
           Iniciá sesión
         </Link>
       </p>

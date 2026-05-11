@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useAuthStore } from '@features/auth/store/auth.store'
 import { withAuth } from '@shared/components/withAuth'
@@ -36,10 +36,10 @@ function ProfilePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold font-[--font-display] text-[--color-text]">
+        <h1 className="text-2xl font-semibold font-[--font-display] text-text">
           Mi perfil
         </h1>
-        <p className="text-sm text-[#94a3b8] mt-1">{user?.email}</p>
+        <p className="text-sm text-text-muted mt-1">{user?.email}</p>
       </div>
 
       <Card>

@@ -1,4 +1,4 @@
-const STATS = [
+﻿const STATS = [
   { label: 'productos', value: '500+', icon: '📱' },
   { label: 'marcas', value: '50+', icon: '🏷️' },
   { label: 'envío a todo el país', value: '', icon: '🚚' },
@@ -13,10 +13,10 @@ export function StatsBar() {
           {STATS.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center justify-center lg:py-2">
               <span className="text-2xl mb-2">{stat.icon}</span>
-              <span className="font-[--font-display] text-2xl font-bold text-[--color-text]">
+              <span className="font-[--font-display] text-2xl font-bold text-text">
                 {stat.value}
               </span>
-              <span className="mt-1 text-sm text-[--color-text-muted]">
+              <span className="mt-1 text-sm text-text-muted">
                 {stat.label}
               </span>
             </div>

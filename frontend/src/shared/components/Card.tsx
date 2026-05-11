@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from "react";
+﻿import { HTMLAttributes, forwardRef } from "react";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   hoverable?: boolean;
@@ -11,11 +11,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={[
-          "rounded-xl border border-[#1e1e2e] bg-[#0d0d14]/50",
+          "rounded-xl border border-border bg-card/50",
           "shadow-[--shadow-sm]",
           padded ? "p-6" : "",
           hoverable
-            ? "transition-all duration-200 hover:border-[--color-primary] hover:shadow-[--shadow-glow] cursor-pointer"
+            ? "transition-all duration-200 hover:border-primary hover:shadow-[--shadow-glow] cursor-pointer"
             : "",
           className,
         ].join(" ")}
@@ -37,7 +37,7 @@ const CardHeader = ({ children, className = "", ...props }: HTMLAttributes<HTMLD
 
 const CardTitle = ({ children, className = "", ...props }: HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    className={`font-[--font-display] text-xl font-semibold text-[--color-text] ${className}`}
+    className={`font-[--font-display] text-xl font-semibold text-text ${className}`}
     {...props}
   >
     {children}
@@ -45,13 +45,13 @@ const CardTitle = ({ children, className = "", ...props }: HTMLAttributes<HTMLHe
 );
 
 const CardDescription = ({ children, className = "", ...props }: HTMLAttributes<HTMLParagraphElement>) => (
-  <p className={`text-sm text-[--color-text-muted] mt-1 ${className}`} {...props}>
+  <p className={`text-sm text-text-muted mt-1 ${className}`} {...props}>
     {children}
   </p>
 );
 
 const CardFooter = ({ children, className = "", ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={`mt-6 pt-4 border-t border-[--color-border] ${className}`} {...props}>
+  <div className={`mt-6 pt-4 border-t border-border ${className}`} {...props}>
     {children}
   </div>
 );

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useCallback } from 'react'
 import {
@@ -52,14 +52,14 @@ export default function CatalogPage() {
   ].filter(Boolean).length
 
   return (
-    <div className="min-h-screen bg-[#161618]">
+    <div className="min-h-screen">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="font-[--font-display] text-3xl font-bold text-[--color-text]">
+          <h1 className="font-[--font-display] text-3xl font-bold text-text">
             Catálogo
           </h1>
-          <p className="mt-1 text-[--color-text-muted]">
+          <p className="mt-1 text-text-muted">
             Los mejores smartphones, curados para vos.
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function CatalogPage() {
             {/* Results info */}
             <div className="flex items-center justify-between">
               {meta && !loading && (
-                <p className="text-sm text-[--color-text-subtle]">
+                <p className="text-sm text-text-subtle">
                   {meta.total} {meta.total === 1 ? 'producto' : 'productos'}
                   {activeFiltersCount > 0 && ' con filtros aplicados'}
                 </p>

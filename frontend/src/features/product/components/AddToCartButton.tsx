@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@shared/components/Button'
@@ -31,27 +31,27 @@ export function AddToCartButton({ productId, stock }: AddToCartButtonProps) {
       {/* Selector de cantidad */}
       {!outOfStock && (
         <div className="flex items-center gap-3">
-          <span className="text-sm text-[#9090a0]">Cantidad</span>
-          <div className="flex items-center border border-[#2a2a35] rounded-xl overflow-hidden">
+          <span className="text-sm text-text-muted">Cantidad</span>
+          <div className="flex items-center border border-border rounded-xl overflow-hidden">
             <button
               onClick={decrement}
               disabled={quantity <= 1 || isLoading}
-              className="w-9 h-9 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               −
             </button>
-            <span className="w-10 text-center text-sm font-medium text-white select-none">
+            <span className="w-10 text-center text-sm font-medium text-text select-none">
               {quantity}
             </span>
             <button
               onClick={increment}
               disabled={quantity >= stock || isLoading}
-              className="w-9 h-9 flex items-center justify-center text-[#9090a0] hover:text-white hover:bg-[#2a2a35] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-9 h-9 flex items-center justify-center text-text-muted hover:text-text hover:bg-border transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               +
             </button>
           </div>
-          <span className="text-xs text-[#6b6b7a]">{stock} disponibles</span>
+          <span className="text-xs text-text-subtle">{stock} disponibles</span>
         </div>
       )}
 

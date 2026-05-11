@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from "next/link";
 import { useAuthStore } from "@features/auth/store/auth.store";
@@ -22,9 +22,9 @@ function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="group flex items-center gap-2 font-[--font-display] text-2xl font-bold text-[--color-text] hover:text-[--color-primary-light] transition-colors"
+          className="group flex items-center gap-2 font-[--font-display] text-2xl font-bold text-text hover:text-primary-light transition-colors"
         >
-          <svg className="w-7 h-7 text-[--color-primary] group-hover:scale-110 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <svg className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 18.75h3" />
           </svg>
           <span className="group-hover:scale-105 inline-block transition-transform duration-150">ImNotPhound</span>
@@ -34,14 +34,14 @@ function Navbar() {
 <div className="hidden md:flex items-center gap-1">
           <Link
             href="/catalog"
-            className="group flex items-center justify-center h-10 px-5 rounded-full text-[--color-text-muted] hover:text-white hover:ring-2 hover:ring-[#6366f1]/20 text-[15px] font-medium transition-all duration-150"
+            className="group flex items-center justify-center h-10 px-5 rounded-full text-text-muted hover:text-text hover:ring-2 hover:ring-primary/20 text-[15px] font-medium transition-all duration-150"
           >
             <span className="inline-block group-hover:scale-105 transition-transform duration-150">Catálogo</span>
           </Link>
           {isAuthenticated && (
             <Link
               href="/orders"
-              className="group flex items-center justify-center h-10 px-5 rounded-full text-[--color-text-muted] hover:text-white hover:ring-2 hover:ring-[#6366f1]/20 text-[15px] font-medium transition-all duration-150"
+              className="group flex items-center justify-center h-10 px-5 rounded-full text-text-muted hover:text-text hover:ring-2 hover:ring-primary/20 text-[15px] font-medium transition-all duration-150"
             >
               <span className="inline-block group-hover:scale-105 transition-transform duration-150">Mis pedidos</span>
             </Link>
@@ -53,7 +53,7 @@ function Navbar() {
           {/* Carrito */}
           <button
             onClick={openCart}
-            className="group relative flex items-center justify-center w-10 h-10 rounded-full hover:ring-2 hover:ring-[#6366f1]/20 text-[--color-text-muted] hover:text-[--color-text] transition-all duration-150 cursor-pointer"
+            className="group relative flex items-center justify-center w-10 h-10 rounded-full hover:ring-2 hover:ring-primary/20 text-text-muted hover:text-text transition-all duration-150 cursor-pointer"
             aria-label={`Carrito de compras${itemCount > 0 ? ` (${itemCount} ítems)` : ''}`}
           >
             <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -65,7 +65,7 @@ function Navbar() {
               />
             </svg>
             {itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-[#6366f1] text-white text-[10px] font-bold leading-none">
+              <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-primary text-white text-[10px] font-bold leading-none">
                 {itemCount > 9 ? '9+' : itemCount}
               </span>
             )}
@@ -74,22 +74,22 @@ function Navbar() {
           {/* Auth */}
           {isLoading ? (
             <div className="flex items-center gap-3">
-              <div className="hidden sm:block w-20 h-4 rounded bg-[#1e1e2e] animate-pulse" />
-              <div className="w-16 h-9 rounded-[--radius-md] bg-[#1e1e2e] animate-pulse" />
+              <div className="hidden sm:block w-20 h-4 rounded bg-border animate-pulse" />
+              <div className="w-16 h-9 rounded-[--radius-md] bg-border animate-pulse" />
             </div>
           ) : isAuthenticated && user ? (
             <div className="flex items-center gap-2">
               <Link
                 href="/profile"
-                className="group flex items-center justify-center w-10 h-10 rounded-full border border-[#1e1e2e] bg-[#0f0f17] text-[#818cf8] font-bold text-base hover:border-[#6366f1] hover:ring-2 hover:ring-[#6366f1]/20 transition-all duration-150"
+                className="group flex items-center justify-center w-10 h-10 rounded-full border border-border bg-bg text-primary-light font-bold text-base hover:border-primary hover:ring-2 hover:ring-primary/20 transition-all duration-150"
                 aria-label={`Perfil de ${user.username}`}
               >
                 <span className="inline-block group-hover:scale-110 transition-transform duration-150">{user.username[0].toUpperCase()}</span>
               </Link>
-              <span className="w-px h-6 bg-[#1e1e2e]" />
+              <span className="w-px h-6 bg-border" />
               <button
                 onClick={logout}
-                className="group flex items-center justify-center w-10 h-10 rounded-full border border-[#1e1e2e] hover:border-red-500/50 hover:ring-2 hover:ring-red-500/20 bg-[#0f0f17] hover:bg-red-500/10 text-[--color-text-muted] hover:text-red-400 transition-all duration-150 cursor-pointer"
+                className="group flex items-center justify-center w-10 h-10 rounded-full border border-border hover:border-red-500/50 hover:ring-2 hover:ring-red-500/20 bg-bg hover:bg-red-500/10 text-text-muted hover:text-red-400 transition-all duration-150 cursor-pointer"
                 aria-label="Cerrar sesión"
               >
                 <svg className="w-4.5 h-4.5 group-hover:scale-110 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -101,13 +101,13 @@ function Navbar() {
             <>
               <Link
                 href="/login"
-                className="group hidden sm:inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] text-[--color-text-muted] hover:text-[--color-text] hover:bg-[--color-surface] transition-all duration-150"
+                className="group hidden sm:inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] text-text-muted hover:text-text hover:bg-surface transition-all duration-150"
               >
                 <span className="inline-block group-hover:scale-105 transition-transform duration-150">Iniciar sesión</span>
               </Link>
               <Link
                 href="/register"
-                className="group inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] bg-[--color-primary] text-white hover:bg-[--color-primary-hover] transition-all duration-150"
+                className="group inline-flex items-center h-9 px-4 text-sm font-medium rounded-[--radius-md] bg-primary text-white hover:bg-primary-hover transition-all duration-150"
               >
                 <span className="inline-block group-hover:scale-105 transition-transform duration-150">Registrarse</span>
               </Link>

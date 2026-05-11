@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { catalogService } from '@features/catalog/services/catalog.service'
 import type { Category } from '@features/catalog/types/catalog.types'
 
@@ -28,12 +28,12 @@ function CategoryCard({ category }: { category: Category }) {
   return (
     <Link
       href="/catalog"
-      className="group flex flex-col items-center justify-center gap-3 rounded-[--radius-xl] border border-[--color-border] bg-[--color-card] p-8 transition-all duration-200 hover:border-[--color-primary] hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+      className="group flex flex-col items-center justify-center gap-3 rounded-[--radius-xl] border border-border bg-card p-8 transition-all duration-200 hover:border-primary hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]"
     >
       <span className="text-3xl transition-transform duration-200 group-hover:scale-110">
         {icon}
       </span>
-      <span className="font-[--font-display] text-sm font-semibold text-[--color-text] text-center">
+      <span className="font-[--font-display] text-sm font-semibold text-text text-center">
         {category.name}
       </span>
     </Link>
@@ -55,10 +55,10 @@ export async function CategoryHighlights() {
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
       <div className="mb-10">
-        <h2 className="font-[--font-display] text-3xl font-bold text-[--color-text]">
+        <h2 className="font-[--font-display] text-3xl font-bold text-text">
           Categorías
         </h2>
-        <p className="mt-2 text-[--color-text-muted]">
+        <p className="mt-2 text-text-muted">
           Explorá nuestro catálogo por categoría.
         </p>
       </div>

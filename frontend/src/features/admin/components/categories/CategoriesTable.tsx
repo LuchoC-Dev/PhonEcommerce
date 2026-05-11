@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { Button } from '@shared/components/Button'
@@ -56,7 +56,7 @@ function CategoriesTable({ categories, loading, error, onCreate, onUpdate, onDel
   }
 
   if (error) {
-    return <p className="text-[--color-danger] text-center py-8">{error}</p>
+    return <p className="text-danger text-center py-8">{error}</p>
   }
 
   return (

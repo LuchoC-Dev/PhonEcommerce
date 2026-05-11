@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -94,14 +94,14 @@ export function ProfileForm({ profile, onSave }: ProfileFormProps) {
           <span
             className={`text-sm px-3 py-2 rounded-md ml-2 ${
               feedback.type === 'success'
-                ? 'text-[#6dd4c6] bg-[#1a1a2e]/60 border border-[#1e1e2e]'
+                ? 'text-success bg-card/60 border border-border'
                 : 'text-[#f87171] bg-[#450a0a]/50 border border-[#f87171]/30'
             }`}
           >
             {feedback.message}
           </span>
         )}
-        <Button type="submit" loading={isSubmitting} className="ml-auto !font-sans bg-transparent text-white rounded-lg text-sm font-medium hover:bg-[#1e1e2e] hover:text-[#f8fafc]">
+        <Button type="submit" loading={isSubmitting} className="ml-auto !font-sans bg-transparent text-text rounded-lg text-sm font-medium hover:bg-border hover:text-text">
           Guardar cambios
         </Button>
       </div>
