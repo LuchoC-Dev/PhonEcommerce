@@ -61,7 +61,7 @@ export function AddressForm({ address, onSubmit, onCancel, isLoading, title }: A
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      <h3 className="font-[--font-display] text-lg font-semibold text-text">
+      <h3 className="font-display text-lg font-semibold text-text">
         {title}
       </h3>
 

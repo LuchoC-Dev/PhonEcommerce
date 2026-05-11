@@ -1,7 +1,9 @@
 ﻿'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { withAuth } from '@shared/components/withAuth'
+import { Button } from '@shared/components/Button'
 import { Spinner } from '@shared/components/Spinner'
 
 import { useOrders } from '@features/orders/hooks/useOrders'
@@ -9,17 +11,15 @@ import { OrderCard } from '@features/orders/components/OrderCard'
 
 function OrdersPage() {
   const { orders, isLoading, error } = useOrders()
+  const router = useRouter()
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-text font-[--font-display]">Mis pedidos</h1>
-        <Link
-          href="/catalog"
-          className="inline-flex items-center justify-center h-8 px-3 text-sm gap-1.5 rounded-lg bg-transparent text-text-muted hover:bg-border hover:text-text font-body font-medium transition-all duration-150"
-        >
+        <h1 className="text-2xl font-bold text-text font-display">Mis pedidos</h1>
+        <Button variant="subtle" size="sm" onClick={() => router.push('/catalog')}>
           Seguir comprando
-        </Link>
+        </Button>
       </div>
 
       {isLoading && (

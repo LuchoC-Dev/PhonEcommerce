@@ -4,6 +4,7 @@ import { use, useState } from 'react'
 import Link from 'next/link'
 import { withAuth } from '@shared/components/withAuth'
 import { Spinner } from '@shared/components/Spinner'
+import { Button } from '@shared/components/Button'
 import { useOrder } from '@features/orders/hooks/useOrder'
 import { OrderStatusBadge } from '@features/orders/components/OrderStatusBadge'
 
@@ -56,7 +57,7 @@ function OrderDetailPage({ params }: Props) {
           >
             ← Mis pedidos
           </Link>
-          <h1 className="text-xl font-bold text-text font-[--font-display]">
+          <h1 className="text-xl font-bold text-text font-display">
             Pedido #{order.id.slice(-8).toUpperCase()}
           </h1>
           <p className="text-xs text-text-muted">{date}</p>
@@ -109,34 +110,19 @@ function OrderDetailPage({ params }: Props) {
       {(order.status === 'PENDING' || order.status === 'CONFIRMED') && (
         <div className="flex flex-col gap-3 items-start">
           {!confirming ? (
-            <button
-              type="button"
-              onClick={() => setConfirming(true)}
-              className="border border-danger text-danger hover:bg-danger/10 rounded-lg px-4 py-2 text-sm font-medium transition-colors cursor-pointer"
-            >
+            <Button variant="danger" size="sm" font="body" onClick={() => setConfirming(true)}>
               Cancelar pedido
-            </button>
+            </Button>
           ) : (
             <div className="flex flex-col gap-3">
               <p className="text-sm text-text-muted">¿Estás seguro?</p>
               <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => cancelOrder().then(() => setConfirming(false))}
-                  disabled={isCancelling}
-                  className="rounded-lg px-4 py-2 text-sm font-medium bg-danger hover:bg-danger/80 text-white transition-colors disabled:opacity-60 inline-flex items-center gap-2 cursor-pointer"
-                >
-                  {isCancelling && <Spinner size="sm" />}
+                <Button variant="danger" size="sm" font="body" onClick={() => cancelOrder().then(() => setConfirming(false))} loading={isCancelling}>
                   Sí, cancelar
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConfirming(false)}
-                  disabled={isCancelling}
-                  className="rounded-lg px-4 py-2 text-sm font-medium border border-border text-text-muted hover:bg-card/50 transition-colors disabled:opacity-60 cursor-pointer"
-                >
+                </Button>
+                <Button variant="subtle" size="sm" onClick={() => setConfirming(false)} disabled={isCancelling}>
                   No
-                </button>
+                </Button>
               </div>
             </div>
           )}

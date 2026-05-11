@@ -62,7 +62,7 @@ export function AddressList({ addresses, onAdd, onUpdate, onDelete, isLoading }:
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="font-[--font-display] text-lg font-semibold text-text">Mis direcciones</h2>
+        <h2 className="font-display text-lg font-semibold text-text">Mis direcciones</h2>
         <Button
           size="sm"
           onClick={openCreate}

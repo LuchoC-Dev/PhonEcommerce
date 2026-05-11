@@ -95,7 +95,7 @@ export function ProfileForm({ profile, onSave }: ProfileFormProps) {
             className={`text-sm px-3 py-2 rounded-md ml-2 ${
               feedback.type === 'success'
                 ? 'text-success bg-card/60 border border-border'
-                : 'text-[#f87171] bg-[#450a0a]/50 border border-[#f87171]/30'
+                : 'text-danger bg-danger-muted/50 border border-danger/30'
             }`}
           >
             {feedback.message}
