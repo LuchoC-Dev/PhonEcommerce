@@ -1,4 +1,4 @@
-﻿import { SettingsSidebar } from '@features/settings'
+﻿import { SettingsSidebar } from "@features/settings";
 
 export default function SettingsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -6,8 +6,8 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
       <div className="bg-bg border border-border rounded-xl flex">
         <SettingsSidebar />
         <div className="w-px bg-border" />
-        <main className="flex-1 min-w-0 p-6">{children}</main>
+        <main className="flex-1 min-w-0 p-6 bg-surface/40">{children}</main>
       </div>
     </div>
-  )
+  );
 }
