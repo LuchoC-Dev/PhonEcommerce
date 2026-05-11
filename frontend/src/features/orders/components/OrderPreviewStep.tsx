@@ -18,31 +18,31 @@ export function OrderPreviewStep({ preview, onConfirm, onBack, isLoading, error 
         {preview.items.map((item) => (
           <div
             key={item.productId}
-            className="flex items-center justify-between gap-4 p-4 rounded-[--radius-lg] bg-card border border-border"
+            className="flex items-center justify-between gap-4 p-4 rounded-lg bg-card border border-border"
           >
             <div className="flex flex-col gap-0.5 min-w-0">
-              <p className="text-sm font-medium text-text truncate font-[--font-display]">
+              <p className="text-sm font-medium text-text truncate font-display">
                 {item.productName}
               </p>
               <p className="text-xs text-text-muted">
                 x{item.quantity} · ${item.unitPrice.toLocaleString('es-AR')} c/u
               </p>
             </div>
-            <p className="text-sm font-semibold text-text font-[--font-display] flex-shrink-0">
+            <p className="text-sm font-semibold text-text font-display flex-shrink-0">
               ${item.subtotal.toLocaleString('es-AR')}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="flex flex-col gap-2 p-4 rounded-[--radius-lg] bg-surface border border-border">
-        <div className="flex justify-between text-base font-semibold text-text font-[--font-display]">
+      <div className="flex flex-col gap-2 p-4 rounded-lg bg-surface border border-border">
+        <div className="flex justify-between text-base font-semibold text-text font-display">
           <span>Total</span>
           <span>${preview.totalAmount.toLocaleString('es-AR')}</span>
         </div>
       </div>
 
-      <div className="p-4 rounded-[--radius-lg] bg-surface border border-border">
+      <div className="p-4 rounded-lg bg-surface border border-border">
         <p className="text-xs font-medium text-text-muted mb-2 uppercase tracking-wide">Envío a</p>
         <p className="text-sm text-text">{preview.shipping.name}</p>
         <p className="text-sm text-text-muted">

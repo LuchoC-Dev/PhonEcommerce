@@ -59,7 +59,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <CardFooter className="mt-auto mx-5 mb-5">
         <div className="flex items-center justify-between gap-2">
-          <span className="font-[--font-display] text-xl font-bold text-text">
+          <span className="font-display text-xl font-bold text-text">
             {formatPrice(product.price)}
           </span>
           <Link href={`/products/${product.slug}`}>

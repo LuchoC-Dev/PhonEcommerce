@@ -28,7 +28,7 @@ function CategoryTree({
         <li key={cat.id}>
           <button
             onClick={() => onSelect(cat.id)}
-            className={`w-full text-left text-sm px-2 py-1.5 rounded-[--radius-md] transition-colors ${
+            className={`w-full text-left text-sm px-2 py-1.5 rounded-md transition-colors ${
               depth > 0 ? 'pl-5' : ''
             } ${
               selectedId === cat.id
@@ -78,7 +78,7 @@ export function FilterSidebar({
   return (
     <aside className="flex flex-col gap-6 w-full">
       <div className="flex items-center justify-between">
-        <h2 className="font-[--font-display] text-sm font-semibold text-text uppercase tracking-wider">
+        <h2 className="font-display text-sm font-semibold text-text uppercase tracking-wider">
           Filtros
         </h2>
         {hasActiveFilters && (
@@ -99,7 +99,7 @@ export function FilterSidebar({
             <button
               key={brand.id}
               onClick={() => handleBrandClick(brand.id)}
-              className={`w-full text-left text-sm px-2 py-1.5 rounded-[--radius-md] transition-colors ${
+              className={`w-full text-left text-sm px-2 py-1.5 rounded-md transition-colors ${
                 filters.brandId === brand.id
                   ? 'bg-primary text-white font-medium'
                   : 'text-text-muted hover:text-text hover:bg-border'
@@ -132,14 +132,14 @@ export function FilterSidebar({
             placeholder="Mín"
             value={filters.minPrice ?? ''}
             onChange={(e) => handlePriceChange('minPrice', e.target.value)}
-            className="w-full bg-card border border-border rounded-[--radius-md] px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
+            className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
           />
           <input
             type="number"
             placeholder="Máx"
             value={filters.maxPrice ?? ''}
             onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
-            className="w-full bg-card border border-border rounded-[--radius-md] px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
+            className="w-full bg-card border border-border rounded-md px-3 py-2 text-sm text-text placeholder:text-text-subtle focus:outline-none focus:border-primary"
           />
         </div>
       </div>

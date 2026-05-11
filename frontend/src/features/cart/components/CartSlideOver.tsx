@@ -4,10 +4,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useCartStore, selectItemCount, selectTotal } from '../store/cart.store'
-
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(amount)
-}
+import { formatPrice } from '@shared/utils'
 
 export function CartSlideOver() {
   const isOpen = useCartStore((s) => s.isOpen)
@@ -55,7 +52,7 @@ export function CartSlideOver() {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border">
           <div>
-            <h2 className="font-[--font-display] text-lg font-semibold text-text">
+            <h2 className="font-display text-lg font-semibold text-text">
               Carrito
             </h2>
             <p className="text-sm text-text-muted">

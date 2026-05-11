@@ -9,10 +9,7 @@ import { useAuthStore } from '@features/auth/store/auth.store'
 import { Modal } from '@shared/components/Modal'
 import { Button } from '@shared/components/Button'
 import { Spinner } from '@shared/components/Spinner'
-
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(amount)
-}
+import { formatPrice } from '@shared/utils'
 
 export default function CartPage() {
   const router = useRouter()
@@ -34,7 +31,7 @@ export default function CartPage() {
         <svg className="w-16 h-16 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9Z" />
         </svg>
-        <h1 className="font-[--font-display] text-2xl font-bold text-text">Iniciá sesión para ver tu carrito</h1>
+        <h1 className="font-display text-2xl font-bold text-text">Iniciá sesión para ver tu carrito</h1>
         <p className="text-text-muted max-w-sm">Necesitás una cuenta para guardar productos en tu carrito.</p>
         <Link
           href="/login"
@@ -60,7 +57,7 @@ export default function CartPage() {
         <svg className="w-16 h-16 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
-        <h1 className="font-[--font-display] text-2xl font-bold text-text">Tu carrito está vacío</h1>
+        <h1 className="font-display text-2xl font-bold text-text">Tu carrito está vacío</h1>
         <p className="text-text-muted">Explorá nuestro catálogo y encontrá tu próximo teléfono.</p>
         <Link
           href="/catalog"
@@ -82,7 +79,7 @@ export default function CartPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="font-[--font-display] text-3xl font-bold text-text">
+        <h1 className="font-display text-3xl font-bold text-text">
           Carrito
           <span className="ml-3 text-lg font-normal text-text-muted">
             ({itemCount} {itemCount === 1 ? 'ítem' : 'ítems'})
@@ -207,7 +204,7 @@ export default function CartPage() {
         {/* Resumen del pedido */}
         <div className="lg:col-span-1">
           <div className="sticky top-24 rounded-2xl bg-card border border-border p-6">
-            <h2 className="font-[--font-display] text-lg font-semibold text-text mb-4">
+            <h2 className="font-display text-lg font-semibold text-text mb-4">
               Resumen del pedido
             </h2>
 

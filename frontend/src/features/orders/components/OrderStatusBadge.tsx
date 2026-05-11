@@ -1,11 +1,11 @@
 ﻿import type { OrderStatus } from '../types/orders.types'
 
 const STATUS_CONFIG: Record<OrderStatus, { label: string; bg: string; border: string; text: string }> = {
-  PENDING:   { label: 'Pendiente',  bg: 'bg-[#451a03]/50', border: 'border-[#f59e0b]/40', text: 'text-[#fbbf24]' },
+  PENDING:   { label: 'Pendiente',  bg: 'bg-warning-muted/50', border: 'border-warning/40', text: 'text-amber-400' },
   CONFIRMED: { label: 'Confirmado', bg: 'bg-primary-muted/40', border: 'border-primary/40', text: 'text-primary-light' },
-  SHIPPED:   { label: 'Enviado',    bg: 'bg-[#083344]/50', border: 'border-[#06b6d4]/40', text: 'text-[#22d3ee]' },
-  DELIVERED: { label: 'Entregado',  bg: 'bg-[#14532d]/50', border: 'border-[#22c55e]/40', text: 'text-[#4ade80]' },
-  CANCELLED: { label: 'Cancelado', bg: 'bg-transparent', border: 'border-0', text: 'text-[#f87171]' },
+  SHIPPED:   { label: 'Enviado',    bg: 'bg-info-muted/50', border: 'border-info/40', text: 'text-info' },
+  DELIVERED: { label: 'Entregado',  bg: 'bg-success-muted/50', border: 'border-success/40', text: 'text-success' },
+  CANCELLED: { label: 'Cancelado', bg: 'bg-danger-muted/50', border: 'border-danger/40', text: 'text-danger' },
 }
 
 export function OrderStatusBadge({ status }: { status: OrderStatus }) {

@@ -19,8 +19,8 @@ function Badge({ variant = "default", children, className = "", ...props }: Badg
   return (
     <span
       className={[
-        "inline-flex items-center gap-1 rounded-[--radius-full] border px-2.5 py-0.5",
-        "text-xs font-medium font-[--font-body]",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-full border px-2.5 py-0.5",
+        "text-xs font-medium font-body text-center",
         variantClasses[variant],
         className,
       ].join(" ")}

@@ -13,7 +13,7 @@ export function OrderSuccessStep({ order }: { order: OrderWithDetails }) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <h2 className="text-2xl font-bold text-text font-[--font-display]">¡Pedido confirmado!</h2>
+        <h2 className="text-2xl font-bold text-text font-display">¡Pedido confirmado!</h2>
         <p className="text-text-muted text-sm">
           Tu pedido fue procesado exitosamente.
         </p>
@@ -25,13 +25,13 @@ export function OrderSuccessStep({ order }: { order: OrderWithDetails }) {
       <div className="flex flex-col gap-2 w-full max-w-xs">
         <Link
           href={`/orders/${order.id}`}
-          className="inline-flex items-center justify-center h-12 px-6 text-base gap-2.5 rounded-[--radius-lg] bg-primary text-white hover:bg-primary-hover font-[--font-display] font-medium transition-all duration-150"
+          className="inline-flex items-center justify-center h-12 px-6 text-base gap-2.5 rounded-lg bg-primary text-white hover:bg-primary-hover font-display font-medium transition-all duration-150"
         >
           Ver mi pedido
         </Link>
         <Link
           href="/catalog"
-          className="inline-flex items-center justify-center h-10 px-4 text-sm gap-2 rounded-[--radius-md] bg-transparent text-text-muted hover:text-text hover:bg-surface font-[--font-display] font-medium transition-all duration-150"
+          className="inline-flex items-center justify-center h-10 px-4 text-sm gap-2 rounded-md bg-transparent text-text-muted hover:text-text hover:bg-surface font-display font-medium transition-all duration-150"
         >
           Seguir comprando
         </Link>

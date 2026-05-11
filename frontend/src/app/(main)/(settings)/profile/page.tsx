@@ -1,26 +1,26 @@
-﻿'use client'
+﻿"use client";
 
-import { useAuthStore } from '@features/auth/store/auth.store'
-import { withAuth } from '@shared/components/withAuth'
-import { Card, CardHeader, CardTitle } from '@shared/components/Card'
-import { PageSpinner } from '@shared/components/Spinner'
-import { ProfileForm } from '@features/profile/components/ProfileForm'
-import { AddressList } from '@features/profile/components/AddressList'
-import { useProfile } from '@features/profile/hooks/useProfile'
-import { useAddresses } from '@features/profile/hooks/useAddresses'
+import { useAuthStore } from "@features/auth/store/auth.store";
+import { withAuth } from "@shared/components/withAuth";
+import { Card, CardHeader, CardTitle } from "@shared/components/Card";
+import { PageSpinner } from "@shared/components/Spinner";
+import { ProfileForm } from "@features/profile/components/ProfileForm";
+import { AddressList } from "@features/profile/components/AddressList";
+import { useProfile } from "@features/profile/hooks/useProfile";
+import { useAddresses } from "@features/profile/hooks/useAddresses";
 
 function ProfilePage() {
-  const user = useAuthStore((s) => s.user)
-  const { profile, addresses, setAddresses, isLoading, error, updateProfile } = useProfile()
+  const user = useAuthStore((s) => s.user);
+  const { profile, addresses, setAddresses, isLoading, error, updateProfile } = useProfile();
   const {
     addAddress,
     updateAddress,
     deleteAddress,
     isLoading: addressesLoading,
-  } = useAddresses(addresses, setAddresses)
+  } = useAddresses(addresses, setAddresses);
 
   if (isLoading) {
-    return <PageSpinner />
+    return <PageSpinner />;
   }
 
   if (error) {
@@ -30,15 +30,13 @@ function ProfilePage() {
           <p className="text-[#f87171] text-center py-4">{error}</p>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold font-[--font-display] text-text">
-          Mi perfil
-        </h1>
+        <h1 className="text-2xl font-semibold font-[--font-display] text-text">Mi perfil</h1>
         <p className="text-sm text-text-muted mt-1">{user?.email}</p>
       </div>
 
@@ -59,7 +57,7 @@ function ProfilePage() {
         />
       </Card>
     </div>
-  )
+  );
 }
 
-export default withAuth(ProfilePage)
+export default withAuth(ProfilePage);
